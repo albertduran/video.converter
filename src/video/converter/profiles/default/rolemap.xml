@@ -1,7 +1,14 @@
 <?xml version="1.0"?>
 <rolemap>
+  <roles>
+    <role name="Manager"></role>
+  </roles>
   <permissions>
-  <!-- -*- extra stuff goes here -*- -->
-
+    <permission name="video.converter: Add Video" acquire="True">
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
   </permissions>
 </rolemap>

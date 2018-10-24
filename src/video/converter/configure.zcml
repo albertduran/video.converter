@@ -1,47 +1,50 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
-    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="video.converter">
 
+  <five:registerPackage package="." initialize=".initialize" />
   <i18n:registerTranslations directory="locales" />
 
-  <!--
-    Be careful if you use general includeDependencies, it can have sideffects!
-    Better import explicite packages or configurations ;)
-  -->
-  <!--<includeDependencies package="." />-->
+  <include package="plone.behavior" file="meta.zcml"/>
+  <include package="plone.app.dexterity" />
+  <include package="five.globalrequest" />
+
+  <permission
+      id="video.converter.AddVideo"
+      title="video.converter: Add Video"
+      />
+
+  <plone:behavior
+      title="Video"
+      description="Add support for video fields"
+      provides=".behavior.IVideo"
+      factory=".behavior.Video"
+      for="plone.dexterity.interfaces.IDexterityContent"
+      marker=".interfaces.IVideoEnabled"
+      />
+
+  <adapter name="SearchableText" factory=".indexers.MediaSearchableText" />
+
+  <!-- PrimaryFieldInfo -->
+  <adapter factory=".primary.PrimaryFieldInfo"/>
+
+  <!-- events -->
+  <subscriber
+    for=".interfaces.IVideoEnabled
+         zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+    handler=".subscribers.video_edited" />
+  <subscriber
+    for=".interfaces.IVideoEnabled
+         zope.lifecycleevent.interfaces.IObjectAddedEvent"
+    handler=".subscribers.video_added" />
 
   <include package=".browser" />
-
-  <include file="permissions.zcml" />
-
-  <include file="upgrades.zcml" />
-
-  <genericsetup:registerProfile
-      name="default"
-      title="video.converter"
-      directory="profiles/default"
-      description="Installs the video.converter add-on."
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      post_handler=".setuphandlers.post_install"
-      />
-
-  <genericsetup:registerProfile
-      name="uninstall"
-      title="video.converter (uninstall)"
-      directory="profiles/uninstall"
-      description="Uninstalls the video.converter add-on."
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      post_handler=".setuphandlers.uninstall"
-      />
-
-  <utility
-      factory=".setuphandlers.HiddenProfiles"
-      name="video.converter-hiddenprofiles"
-      />
-
-  <!-- -*- extra stuff goes here -*- -->
+  <include file="profiles.zcml" />
 
 </configure>
