@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<import-steps>
+    <import-step id="video.converter.uninstall" version="3"
+        handler="video.converter.exportimport.uninstall"
+        title="Uninstall step for video.converter">
+    </import-step>
+</import-steps>

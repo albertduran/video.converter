@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<object>
+ <resourcetypes>
+  <linkable purge="False">
+    <element value="Video"/>
+  </linkable>
+</resourcetypes>
+<layout purge="False">
+   <styles purge="False">
+   <element value="Video|span|wcvideo"/>
+   <element value="Small Video|span|wcvideo video-small"/>
+   <element value="Large Video|span|wcvideo video-large"/>
+  </styles>
+ </layout>
+</object>

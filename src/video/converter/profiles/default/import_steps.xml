@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<import-steps>
+    <import-step id="video.converter.install" version="3"
+        handler="video.converter.exportimport.install"
+        title="Installing step for video.converter">
+    </import-step>
+</import-steps>
