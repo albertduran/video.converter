@@ -9,6 +9,8 @@ def install(context):
         return
 
     setup = getToolByName(site, 'portal_setup')
+    import ipdb
+    ipdb.set_trace()
     if getFSVersionTuple()[0] == 4:
         setup.runAllImportStepsFromProfile('profile-video.converter:plone4')
     else:

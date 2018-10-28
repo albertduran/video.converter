@@ -1,4 +1,4 @@
-from zope.interface import implements, implementer, implementsOnly
+from zope.interface import implementer, implementsOnly
 from zope.component import adapter, getMultiAdapter
 from z3c.form.interfaces import IFieldWidget, IFormLayer, IDataManager
 from z3c.form.widget import FieldWidget
@@ -24,7 +24,6 @@ class StreamNamedFileWidget(NamedFileWidget):
 @adapter(INamedFileField, IFormLayer)
 def StreamNamedFileFieldWidget(field, request):
     return FieldWidget(field, StreamNamedFileWidget(request))
-
 
 
 class MediaStream(Download):

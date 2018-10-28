@@ -10,7 +10,7 @@
    <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property
-      name="available_expr">object/@@wcmedia-utils/valid_type</property>
+      name="available_expr">object/@@converter-utils/valid_type</property>
    <property name="permissions">
     <element value="Modify portal content"/>
    </property>

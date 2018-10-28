@@ -102,6 +102,8 @@ class AVConvProcess(BaseSubProcess):
         for op in ('in', 'out'):
             option = getattr(settings, 'avconv_%s_%s' % (op, video_type)) or ''
             # replace width/height if set
+            # if str(video.width) != str(settings.default_video_width):
+            #     params[op] = in_w
             option = option.replace('{width}', str(video.width))
             option = option.replace('{height}', str(video.height))
             params[op] = shlex.split(option)
@@ -181,6 +183,8 @@ def _convertFormat(context):
         'mp4': 'video_file'
     }
 
+    # import ipdb
+    # ipdb.set_trace()
     portal = getToolByName(context, 'portal_url').getPortalObject()
     settings = GlobalSettings(portal)
     for type_ in settings.additional_video_formats:

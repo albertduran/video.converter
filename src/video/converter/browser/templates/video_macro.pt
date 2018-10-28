@@ -1,22 +1,22 @@
 <div metal:define-macro="video" i18n:domain="video.converter">
 
-<div class="wcvideo-container"
-     tal:define="util video/@@wcmedia-utils|context/@@wcmedia-utils;
+<div class="video-container"
+     tal:define="util video/@@converter-utils|context/@@converter-utils;
                  settings util/settings;
                  video nocall: video|context;
                  height height|video/height|settings/default_video_height|string:720;
                  width width|video/width|settings/default_video_width|string:400;">
 <tal:has_video tal:condition="python: util.mp4_url">
-    <video width="320" height="240" poster="poster.jpg" controls="controls" preload="none" class="active pat-media"
+    <video width="" height="" poster="poster.jpg" controls="controls" preload="none" class="active pat-media"
           tal:attributes="poster util/image_url;
                           width width;
                           height height;">
         <tal:videos tal:repeat="video python:util.videos()">
-            <source src="/media/echo-hereweare.mp4" type="video/mp4"
+            <source src="" type="video/mp4"
                     tal:attributes="src video/url;
                                     type string:video/${video/type}" />
         </tal:videos>
-        <object width="320" height="240" type="application/x-shockwave-flash" data="flashmediaelement.swf"
+        <object width="" height="" type="application/x-shockwave-flash" data="flashmediaelement.swf"
                 tal:attributes="data string:${util/mstatic}/flashmediaelement.swf;
                                 width width;
                                 height height;">
@@ -25,7 +25,7 @@
             <param name="flashvars" value="controls=true&file=myvideo.mp4"
                   tal:attributes="value string:controls=true&file=${util/mp4_url_quoted}&poster=${util/image_url_quoted};" />
             <param name="allowFullScreen" value="true" />
-            <img src="myvideo.jpg" width="320" height="240" title="No video playback capabilities"
+            <img src="" width="" height="" title="No video playback capabilities"
                  tal:condition="util/image_url"
                  tal:attributes="src util/image_url;
                                  title video/Title;

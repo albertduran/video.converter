@@ -1,7 +1,7 @@
 /*!
  *
  * MediaElement.js
- * HTML5 <video> and <audio> shim and player
+ * HTML5 <video> shim and player
  * http://mediaelementjs.com/
  *
  * Creates a JavaScript object that mimics HTML5 MediaElement API
@@ -25,14 +25,14 @@ mejs.meIndex = 0;
 // media types accepted by plugins
 mejs.plugins = {
 	silverlight: [
-		{version: [3,0], types: ['video/mp4','video/m4v','video/mov','video/wmv','audio/wma','audio/m4a','audio/mp3','audio/wav','audio/mpeg']}
+		{version: [3,0], types: ['video/mp4','video/m4v','video/mov','video/wmv']}
 	],
 	flash: [
-		{version: [9,0,124], types: ['video/mp4','video/m4v','video/mov','video/flv','video/rtmp','video/x-flv','audio/flv','audio/x-flv','audio/mp3','audio/m4a','audio/mpeg', 'video/youtube', 'video/x-youtube', 'video/dailymotion', 'video/x-dailymotion', 'application/x-mpegURL']}
+		{version: [9,0,124], types: ['video/mp4','video/m4v','video/mov','video/flv','video/rtmp','video/x-flv', 'video/youtube', 'video/x-youtube', 'video/dailymotion', 'video/x-dailymotion', 'application/x-mpegURL']}
 		//,{version: [12,0], types: ['video/webm']} // for future reference (hopefully!)
 	],
 	youtube: [
-		{version: null, types: ['video/youtube', 'video/x-youtube', 'audio/youtube', 'audio/x-youtube']}
+		{version: null, types: ['video/youtube', 'video/x-youtube']}
 	],
 	vimeo: [
 		{version: null, types: ['video/vimeo', 'video/x-vimeo']}
@@ -408,7 +408,7 @@ mejs.MediaFeatures = {
 			ua = mejs.PluginDetector.ua.toLowerCase(),
 			i,
 			v,
-			html5Elements = ['source','track','audio','video'];
+			html5Elements = ['source','track','video'];
 
 		// detect browsers (only the ones that have some kind of quirk we need to work around)
 		t.isiPad = (ua.match(/ipad/i) !== null);
@@ -537,7 +537,7 @@ mejs.MediaFeatures = {
 mejs.MediaFeatures.init();
 
 /*
-extension methods to <video> or <audio> object to bring it into parity with PluginMediaElement (see below)
+extension methods to <video> object to bring it into parity with PluginMediaElement (see below)
 */
 mejs.HtmlMediaElement = {
 	pluginType: 'native',
@@ -593,7 +593,7 @@ mejs.HtmlMediaElement = {
 };
 
 /*
-Mimics the <video/audio> element by calling Flash's External Interface or Silverlights [ScriptableMember]
+Mimics the <video> element by calling Flash's External Interface or Silverlights [ScriptableMember]
 */
 mejs.PluginMediaElement = function (pluginid, pluginType, mediaUrl) {
 	this.id = pluginid;
@@ -863,7 +863,7 @@ mejs.PluginMediaElement.prototype = {
 	}
 };
 
-// Handles calls from Flash/Silverlight and reports them as native <video/audio> events and properties
+// Handles calls from Flash/Silverlight and reports them as native <video> events and properties
 mejs.MediaPluginBridge = {
 
 	pluginMediaElements:{},
@@ -1001,7 +1001,7 @@ mejs.MediaElementDefaults = {
 };
 
 /*
-Determines if a browser supports the <video> or <audio> element
+Determines if a browser supports the <video> element
 and returns either the native element or a Flash/Silverlight version that
 mimics HTML5 MediaElement
 */
@@ -1016,7 +1016,7 @@ mejs.HtmlMediaElementShim = {
 			options = {},
 			htmlMediaElement = (typeof(el) == 'string') ? document.getElementById(el) : el,
 			tagName = htmlMediaElement.tagName.toLowerCase(),
-			isMediaTag = (tagName === 'audio' || tagName === 'video'),
+			isMediaTag = tagName === 'video',
 			src = (isMediaTag) ? htmlMediaElement.getAttribute('src') : htmlMediaElement.getAttribute('href'),
 			poster = htmlMediaElement.getAttribute('poster'),
 			autoplay =  htmlMediaElement.getAttribute('autoplay'),
@@ -5771,6 +5771,7 @@ $.extend(mejs.MepDefaults,
 	});
 
 })(mejs.$);
+
 define("mediaelement", function(){});
 
 /*
@@ -5829,7 +5830,7 @@ $.extend(MediaElementPlayer.prototype, {
 			if (typeof _gaq != 'undefined') {
 				_gaq.push(['_trackEvent',
 					player.options.googleAnalyticsCategory,
-					player.options.googleAnalyticsEventEnded,
+					player.options.googleAnalyticsEventEnded, 
 					player.options.googleAnalyticsTime,
 					(player.options.googleAnalyticsTitle === '') ? player.media.currentSrc : player.options.googleAnalyticsTitle,
 					player.currentTime
@@ -5899,7 +5900,7 @@ $.extend(MediaElementPlayer.prototype, {
 			if (typeof ga != 'undefined') {
 				ga('send', 'event',
 					player.options.googleAnalyticsCategory,
-					player.options.googleAnalyticsEventEnded,
+					player.options.googleAnalyticsEventEnded, 
 					player.options.googleAnalyticsTime,
 				  (player.options.googleAnalyticsTitle === '') ? player.media.currentSrc : player.options.googleAnalyticsTitle,
 					player.currentTime
@@ -5932,7 +5933,7 @@ define('video.converter-patterns-video',[
     init: function() {
       var self = this;
       self.$el.mediaelementplayer({
-        pluginPath: '++resource++video.converter/components/mediaelement/build/',
+        pluginPath: '++resource++video.converter-media/components/mediaelement/build/',
         features: ['playpause','current','progress','duration','tracks','volume','fullscreen',
                    'googleanalytics', 'universalgoogleanalytics']
       });
@@ -5961,6 +5962,7 @@ require([
   $(document).ready(function(){
 
     $('span.wcvideo a').each(function(){
+      debugger;
       var $a = $(this);
       var $span = $a.parents('span.wcvideo');
       var width, height;
@@ -5981,26 +5983,17 @@ require([
           }
           $span.replaceWith($video);
           $video.find('video').mediaelementplayer({
-            pluginPath: '++resource++video.converter/components/mediaelement/build/',
+            pluginPath: '++resource++video.converter-media/components/mediaelement/build/',
             features: ['playpause', 'current', 'progress', 'duration', 'tracks', 'volume', 'fullscreen',
                        'googleanalytics', 'universalgoogleanalytics']
           });
         }
       });
     });
-    $('span.wcaudio a').each(function(){
-      var $a = $(this);
-      var $span = $a.parents('span.wcaudio');
-      var $audio = $('<audio controls="controls" preload="none"' +
-        'src="' + $a.attr('href') + '/@@view/++widget++form.widgets.IAudio.audio_file/@@download/file.mp3' + '"></audio>');
-      $span.replaceWith($audio);
-      $audio.mediaelementplayer({
-        features: ['playpause', 'current', 'progress', 'duration', 'tracks', 'volume', 'fullscreen',
-                   'googleanalytics', 'universalgoogleanalytics']
-      });
-    });
+
   });
 
 });
 
 define("js/bundle.js", function(){});
+

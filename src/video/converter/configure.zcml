@@ -29,8 +29,6 @@
       marker=".interfaces.IVideoEnabled"
       />
 
-  <adapter name="SearchableText" factory=".indexers.MediaSearchableText" />
-
   <!-- PrimaryFieldInfo -->
   <adapter factory=".primary.PrimaryFieldInfo"/>
 

@@ -16,13 +16,6 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
   <genericsetup:registerProfile
-      name="plone4"
-      title="video.converter plone4"
-      directory="profiles/plone4"
-      description="Installs plone4 specific video.converter steps"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
-  <genericsetup:registerProfile
       name="plone5"
       title="video.converter plone5"
       directory="profiles/plone5"
@@ -35,58 +28,6 @@
       directory="profiles/uninstall"
       description="uninstalls the video.converter package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
-
-   <genericsetup:upgradeStep
-      title="Upgrade CSS resources"
-      description="Enable minified CSS and fix URL prefixes"
-      source="1000"
-      destination="1001"
-      handler="video.converter.upgrades.upgrade_resources"
-      sortkey="1"
-      profile="video.converter:default"
-      />
-   <genericsetup:upgradeStep
-      title="Upgrade types definition"
-      description="fix video type definition"
-      source="1001"
-      destination="1002"
-      handler="video.converter.upgrades.upgrade_types"
-      sortkey="1"
-      profile="video.converter:default"
-      />
-   <genericsetup:upgradeStep
-      title="Upgrade types definition"
-      description="Fix typo in video type definition"
-      source="1002"
-      destination="1003"
-      handler="video.converter.upgrades.upgrade_types"
-      sortkey="1"
-      profile="video.converter:default"
-      />
-   <genericsetup:upgradeStep
-      title="Upgrade to version 2"
-      source="*"
-      destination="2000"
-      handler="video.converter.upgrades.upgrade_to_2"
-      sortkey="1"
-      profile="video.converter:default"
-      />
-   <genericsetup:upgradeStep
-      title="Upgrade to version 2.0.2"
-      source="2000"
-      destination="2001"
-      handler="video.converter.upgrades.upgrade_to_2"
-      sortkey="1"
-      profile="video.converter:default"
-      />
-   <genericsetup:upgradeStep
-      title="Upgrade to version 2.0.3"
-      source="2001"
-      destination="2003"
-      handler="video.converter.upgrades.upgrade_to_2003"
-      sortkey="1"
-      profile="video.converter:default"
       />
 
 </configure>

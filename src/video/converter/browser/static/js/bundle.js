@@ -16,6 +16,7 @@ require([
   $(document).ready(function(){
 
     $('span.wcvideo a').each(function(){
+      debugger;
       var $a = $(this);
       var $span = $a.parents('span.wcvideo');
       var width, height;

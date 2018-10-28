@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 import json
-import re
-
-from plone.app.textfield import RichText
 from plone.autoform import directives as form
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.dexterity.interfaces import IDexterityContent
@@ -16,7 +13,7 @@ from zope import schema
 from zope.component import adapts
 from zope.component.hooks import getSite
 from zope.interface import alsoProvides, implements
-from zope.interface import Invalid, invariant
+from zope.interface import Invalid
 
 
 def valid_video(namedblob):
