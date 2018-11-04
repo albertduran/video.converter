@@ -60,7 +60,7 @@ class DefaultGroup(group.Group):
 class ConversionSettingsGroup(group.Group):
     label = u"Conversion settings"
     fields = field.Fields(IGlobalMediaSettings).select(
-        "force", "avconv_in_mp4", "avconv_out_mp4",
+        "avconv_in_mp4", "avconv_out_mp4",
         "avconv_in_webm", "avconv_out_webm")
 
 
@@ -116,14 +116,15 @@ class Utils(MediaView):
 
     @memoize
     def videos(self):
-        types = [('mp4', 'video_file')]
+        types = []
+        # Problema con los types si no tenemos el src porque no se ha convertido el video todavia
         settings = GlobalSettings(
             getToolByName(self.context, 'portal_url').getPortalObject())
         for type_ in settings.additional_video_formats:
             format = getFormat(type_)
             if format:
-                types.append((format.type_,
-                              'video_file_' + format.extension))
+                types.append((format.extension,
+                              format.extension + "_" + format.quality))
         videos = []
         for (_type, fieldname) in types:
             file = getattr(self.context, fieldname, None)

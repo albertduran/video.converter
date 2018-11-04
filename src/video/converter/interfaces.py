@@ -34,7 +34,7 @@ class IGlobalMediaSettings(Interface):
                               u"If you'd prefer to save on disc space, but provide "
                               u"less HTML5 support, change the additional video "
                               u"formats that are generated here"),
-        default=['webm'],
+        default=['mp4_240'],
         value_type=schema.Choice(
             vocabulary=SimpleVocabulary(VIDEO_FORMATS_VOCAB)
         )

@@ -39,18 +39,23 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        # -*- Extra requirements: -*-
+        'setuptools',
+        'plone.transformchain',
+        'plone.app.dexterity',
+        'plone.autoform',
+        'plone.app.textfield',
+        'plone.app.blob',
+        'plone.rfc822',
+        'plone.supermodel',
+        'five.globalrequest',
         'plone.api',
         'Products.GenericSetup>=1.8.2',
-        'setuptools',
         'z3c.jbot',
+        'requests'
     ],
     extras_require={
         'test': [
             'plone.app.testing',
-            # Plone KGS does not use this version, because it would break
-            # Remove if your package shall be part of coredev.
-            # plone_coredev tests as of 2016-04-01.
             'plone.testing>=5.0.0',
             'plone.app.contenttypes',
             'plone.app.robotframework[debug]',

@@ -82,12 +82,13 @@ class AVConvProcess(BaseSubProcess):
     else:
         bin_name = 'avconv'
 
-    def convert(self, filepath, outputfilepath, video_type, video):
+    def convert(self, filepath, outputfilepath, video_type, quality, video):
         portal = getSite()
         settings = GlobalSettings(portal)
 
         params = self.get_avconv_params(settings, video_type, video)
-        cmd = [self.binary] + params['in'] + ['-i', filepath] + params['out'] + [outputfilepath]
+        cmd = [self.binary] + ['-i', filepath] + ['-s', quality] + \
+            params['in'] + [outputfilepath] + params['out']
 
         self._run_command(cmd)
 
@@ -97,13 +98,9 @@ class AVConvProcess(BaseSubProcess):
         self._run_command(cmd)
 
     def get_avconv_params(self, settings, video_type, video):
-        # Add parameters here
         params = {}
         for op in ('in', 'out'):
             option = getattr(settings, 'avconv_%s_%s' % (op, video_type)) or ''
-            # replace width/height if set
-            # if str(video.width) != str(settings.default_video_width):
-            #     params[op] = in_w
             option = option.replace('{width}', str(video.width))
             option = option.replace('{height}', str(video.height))
             params[op] = shlex.split(option)
@@ -179,39 +176,32 @@ def _convertFormat(context):
         return
     context.metadata = metadata
 
-    conversion_types = {
-        'mp4': 'video_file'
-    }
+    conversion_types = {}
 
-    # import ipdb
-    # ipdb.set_trace()
     portal = getToolByName(context, 'portal_url').getPortalObject()
     settings = GlobalSettings(portal)
     for type_ in settings.additional_video_formats:
         format = getFormat(type_)
         if format:
-            conversion_types[format.extension] = 'video_file_%s' % (
-                format.extension
-            )
+            conversion_types[format.type_] = '%s' % (format.quality)
 
-    # sometimes force full video conversion
-    force = settings.force
-
-    for video_type, fieldname in conversion_types.items():
-        if video_type == video.contentType.split('/')[-1] and not force:
-            setattr(context, fieldname, video)
+    for video_type, quality in conversion_types.items():
+        vt = video_type.split('_')[0]
+        if video_type == video.contentType.split('/')[-1]:
+            setattr(context, vt, video)
         else:
-            output_filepath = os.path.join(tmpdir, 'output.' + video_type)
+            output_filepath = os.path.join(
+                tmpdir, 'output_' + video_type + '.' + vt)
             try:
-                avconv.convert(tmpfilepath, output_filepath, video_type, context)
+                avconv.convert(tmpfilepath, output_filepath, vt, quality, context)
             except:
-                logger.warn('error converting to %s' % video_type)
+                logger.warn('error converting to %s' % vt)
                 continue
             if os.path.exists(output_filepath):
                 fi = open(output_filepath)
                 namedblob = NamedBlobFile(
-                    fi, filename=switchFileExt(video.filename,  video_type))
-                setattr(context, fieldname, namedblob)
+                    fi, filename=switchFileExt(video.filename,  vt))
+                setattr(context, vt, namedblob)
                 fi.close()
 
     # try and grab one from video
