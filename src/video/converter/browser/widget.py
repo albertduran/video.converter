@@ -23,6 +23,8 @@ class StreamNamedFileWidget(NamedFileWidget):
 @implementer(IFieldWidget)
 @adapter(INamedFileField, IFormLayer)
 def StreamNamedFileFieldWidget(field, request):
+    # import ipdb
+    # ipdb.set_trace()
     return FieldWidget(field, StreamNamedFileWidget(request))
 
 
@@ -43,6 +45,7 @@ class MediaStream(Download):
             content = aq_inner(self.context.form.getContent())
         else:
             content = aq_inner(self.context.context)
+
         field = aq_inner(self.context.field)
 
         dm = getMultiAdapter((content, field,), IDataManager)

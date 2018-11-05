@@ -24,17 +24,6 @@ except ImportError:
     from zope.interface import Interface as IDisableCSRFProtection  # noqa
 
 
-class MediaView(BrowserView):
-
-    @property
-    @memoize
-    def mstatic(self):
-        portal = getToolByName(self.context, 'portal_url').getPortalObject()
-        portal_url = portal.absolute_url()
-        static = portal_url + '/++resource++video.converter-media'
-        return static + '/components/mediaelement/build'
-
-
 class VideoView(BrowserView):
 
     def get_edit_url(self):
@@ -94,7 +83,7 @@ class ConvertVideo(BrowserView):
         self.request.response.redirect(self.context.absolute_url())
 
 
-class Utils(MediaView):
+class Utils(BrowserView):
 
     def valid_type(self):
         return IMediaEnabled.providedBy(self.context)
@@ -123,15 +112,15 @@ class Utils(MediaView):
         for type_ in settings.additional_video_formats:
             format = getFormat(type_)
             if format:
-                types.append((format.extension,
-                              format.extension + "_" + format.quality))
+                types.append((format.extension, format.type_, format.quality))
         videos = []
-        for (_type, fieldname) in types:
-            file = getattr(self.context, fieldname, None)
+        for (extension, file_id, resolution) in types:
+            file = getattr(self.context, file_id, None)
             if file:
                 videos.append({
-                    'type': _type,
-                    'url': self.base_furl + fieldname + '/@@stream'
+                    'type': extension,
+                    'url': self.base_furl + file_id + '/@@stream',
+                    'quality': resolution.split('x')[1]
                 })
         return videos
 

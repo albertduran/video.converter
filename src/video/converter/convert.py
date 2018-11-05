@@ -201,7 +201,7 @@ def _convertFormat(context):
                 fi = open(output_filepath)
                 namedblob = NamedBlobFile(
                     fi, filename=switchFileExt(video.filename,  vt))
-                setattr(context, vt, namedblob)
+                setattr(context, video_type, namedblob)
                 fi.close()
 
     # try and grab one from video
@@ -215,6 +215,7 @@ def _convertFormat(context):
             fi.close()
     except:
         logger.warn('error getting thumbnail from video')
+    logger.warn('CONVERSIONS FINISHED')
     rmtree(tmpdir)
 
 

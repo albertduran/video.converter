@@ -4,6 +4,7 @@ define([
   'mockup-patterns-base',
   'mediaelement',
   'mep-feature-googleanalytics',
+  'mep-feature-quality',
   'mep-feature-universalgoogleanalytics'
 ], function($, Base) {
   'use strict';
@@ -16,9 +17,9 @@ define([
     init: function() {
       var self = this;
       self.$el.mediaelementplayer({
-        pluginPath: '++resource++video.converter-media/components/mediaelement/build/',
+        pluginPath: '++resource++video.converter/components/mediaelement/build/',
         features: ['playpause','current','progress','duration','tracks','volume','fullscreen',
-                   'googleanalytics', 'universalgoogleanalytics']
+                   'googleanalytics', 'universalgoogleanalytics', 'quality']
       });
     }
   });

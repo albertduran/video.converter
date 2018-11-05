@@ -53,10 +53,73 @@ class IVideo(model.Schema):
         constraint=valid_video
     )
 
-    form.omitted(IAddForm, 'video_file_webm')
-    form.omitted(IEditForm, 'video_file_webm')
-    form.widget(video_file_webm=StreamNamedFileFieldWidget)
-    video_file_webm = namedfile.NamedBlobFile(
+    form.omitted(IAddForm, 'webm_240')
+    form.omitted(IEditForm, 'webm_240')
+    form.widget(webm_240=StreamNamedFileFieldWidget)
+    webm_240 = namedfile.NamedBlobFile(
+        required=False,
+    )
+
+    form.omitted(IAddForm, 'webm_360')
+    form.omitted(IEditForm, 'webm_360')
+    form.widget(webm_360=StreamNamedFileFieldWidget)
+    webm_360 = namedfile.NamedBlobFile(
+        required=False,
+    )
+
+    form.omitted(IAddForm, 'webm_480')
+    form.omitted(IEditForm, 'webm_480')
+    form.widget(webm_480=StreamNamedFileFieldWidget)
+    webm_480 = namedfile.NamedBlobFile(
+        required=False,
+    )
+
+    form.omitted(IAddForm, 'webm_720')
+    form.omitted(IEditForm, 'webm_720')
+    form.widget(webm_720=StreamNamedFileFieldWidget)
+    webm_720 = namedfile.NamedBlobFile(
+        required=False,
+    )
+
+    form.omitted(IAddForm, 'webm_1080')
+    form.omitted(IEditForm, 'webm_1080')
+    form.widget(webm_1080=StreamNamedFileFieldWidget)
+    webm_1080 = namedfile.NamedBlobFile(
+        required=False,
+    )
+
+    form.omitted(IAddForm, 'mp4_240')
+    form.omitted(IEditForm, 'mp4_240')
+    form.widget(mp4_240=StreamNamedFileFieldWidget)
+    mp4_240 = namedfile.NamedBlobFile(
+        required=False,
+    )
+
+    form.omitted(IAddForm, 'mp4_360')
+    form.omitted(IEditForm, 'mp4_360')
+    form.widget(mp4_360=StreamNamedFileFieldWidget)
+    mp4_360 = namedfile.NamedBlobFile(
+        required=False,
+    )
+
+    form.omitted(IAddForm, 'mp4_480')
+    form.omitted(IEditForm, 'mp4_480')
+    form.widget(mp4_480=StreamNamedFileFieldWidget)
+    mp4_480 = namedfile.NamedBlobFile(
+        required=False,
+    )
+
+    form.omitted(IAddForm, 'mp4_720')
+    form.omitted(IEditForm, 'mp4_720')
+    form.widget(mp4_720=StreamNamedFileFieldWidget)
+    mp4_720 = namedfile.NamedBlobFile(
+        required=False,
+    )
+
+    form.omitted(IAddForm, 'mp4_1080')
+    form.omitted(IEditForm, 'mp4_1080')
+    form.widget(mp4_1080=StreamNamedFileFieldWidget)
+    mp4_1080 = namedfile.NamedBlobFile(
         required=False,
     )
 
@@ -151,7 +214,6 @@ class Video(BaseAdapter):
     def _set_video_file(self, value):
         if value is None:
             self.context.video_file = None
-            self.context.video_file_webm = None
         elif value != getattr(self.context, 'video_file', _marker):
             self.context.video_converted = False
             self.context.video_file = value
@@ -160,5 +222,14 @@ class Video(BaseAdapter):
     image = BasicProperty(IVideo['image'])
     width = BasicProperty(IVideo['width'])
     height = BasicProperty(IVideo['height'])
-    video_file_webm = UnsettableProperty(IVideo['video_file_webm'])
+    webm_240 = UnsettableProperty(IVideo['webm_240'])
+    webm_360 = UnsettableProperty(IVideo['webm_360'])
+    webm_480 = UnsettableProperty(IVideo['webm_480'])
+    webm_720 = UnsettableProperty(IVideo['webm_720'])
+    webm_1080 = UnsettableProperty(IVideo['webm_1080'])
+    mp4_240 = UnsettableProperty(IVideo['mp4_240'])
+    mp4_360 = UnsettableProperty(IVideo['mp4_360'])
+    mp4_480 = UnsettableProperty(IVideo['mp4_480'])
+    mp4_720 = UnsettableProperty(IVideo['mp4_720'])
+    mp4_1080 = UnsettableProperty(IVideo['mp4_1080'])
     image = UnsettableProperty(IVideo['image'])

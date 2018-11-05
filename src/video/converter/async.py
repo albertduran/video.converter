@@ -28,6 +28,3 @@ def convertVideoFormats(video):
         'Converting video to compatible formats. Be patient.',
         request=getRequest())
     _run(video, convert.convertVideoFormats)
-    api.portal.show_message(
-        'Conversion finished!',
-        request=getRequest())

@@ -60,11 +60,4 @@
     provides="..interfaces.IGlobalMediaSettings"
     factory="..settings.GlobalSettings" />
 
-  <configure zcml:condition="installed Products.CMFPlone.interfaces.syndication">
-      factory=".syndication.VideoFeedItem"
-      for="video.converter.interfaces.IVideoEnabled
-           Products.CMFPlone.interfaces.syndication.IFeed"
-      provides="Products.CMFPlone.interfaces.syndication.IFeedItem" />
-  </configure>
-
 </configure>
