@@ -1,21 +1,34 @@
 <div metal:define-macro="video" i18n:domain="video.converter">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.6/mediaelementplayer.css">
+  <link rel="stylesheet" href="++resource++video.converter/mediaelement-plugins/dist/quality/quality.css">
+  <div class="video-container"
+       tal:define="util video/@@converter-utils|context/@@converter-utils;
+                   settings util/settings;
+                   video nocall: video|context;
+                   height height|video/height|settings/default_video_height|string:720;
+                   width width|video/width|settings/default_video_width|string:400;">
+    <tal:has_video tal:condition="python: util.mp4_url">
+        <video tal:attributes="poster util/image_url; width width; height height;"
+              preload="none" class="mejs-player" controls="" controls playsinline webkit-playsinline >
+            <tal:videos tal:repeat="video python:util.videos()">
+                <source src="" type="video/mp4"
+                        tal:attributes="src video/url;
+                                        type string:video/${video/type};
+                                        data-quality video/quality;" />
+            </tal:videos>
+        </video>
+    </tal:has_video>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.6/mediaelement-and-player.min.js"></script>
+  <script src="++resource++video.converter/mediaelement-plugins/dist/quality/quality.js"></script>
+  <script>
+  	var mediaElements = document.querySelectorAll('video, audio');
 
-<div class="video-container"
-     tal:define="util video/@@converter-utils|context/@@converter-utils;
-                 settings util/settings;
-                 video nocall: video|context;
-                 height height|video/height|settings/default_video_height|string:720;
-                 width width|video/width|settings/default_video_width|string:400;">
-<tal:has_video tal:condition="python: util.mp4_url">
-    <video tal:attributes="poster util/image_url; width width; height height;"
-          preload="none" class="mejs-player" controls="" controls playsinline webkit-playsinline >
-        <tal:videos tal:repeat="video python:util.videos()">
-            <source src="" type="video/mp4"
-                    tal:attributes="src video/url;
-                                    type string:video/${video/type};
-                                    data-quality video/quality;" />
-        </tal:videos>
-    </video>
-</tal:has_video>
-</div>
+  	for (var i = 0, total = mediaElements.length; i < total; i++) {
+  		new MediaElementPlayer(mediaElements[i], {
+  			features: ['playpause', 'current', 'progress', 'duration', 'volume', 'quality', 'fullscreen'],
+  		});
+  	}
+  </script>
 </div>
