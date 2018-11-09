@@ -53,13 +53,6 @@ class IVideo(model.Schema):
         constraint=valid_video
     )
 
-    form.omitted(IAddForm, 'webm_240')
-    form.omitted(IEditForm, 'webm_240')
-    form.widget(webm_240=StreamNamedFileFieldWidget)
-    webm_240 = namedfile.NamedBlobFile(
-        required=False,
-    )
-
     form.omitted(IAddForm, 'webm_360')
     form.omitted(IEditForm, 'webm_360')
     form.widget(webm_360=StreamNamedFileFieldWidget)
@@ -81,45 +74,24 @@ class IVideo(model.Schema):
         required=False,
     )
 
-    form.omitted(IAddForm, 'webm_1080')
-    form.omitted(IEditForm, 'webm_1080')
-    form.widget(webm_1080=StreamNamedFileFieldWidget)
-    webm_1080 = namedfile.NamedBlobFile(
+    form.omitted(IAddForm, 'ogg_360')
+    form.omitted(IEditForm, 'ogg_360')
+    form.widget(ogg_360=StreamNamedFileFieldWidget)
+    ogg_360 = namedfile.NamedBlobFile(
         required=False,
     )
 
-    form.omitted(IAddForm, 'mp4_240')
-    form.omitted(IEditForm, 'mp4_240')
-    form.widget(mp4_240=StreamNamedFileFieldWidget)
-    mp4_240 = namedfile.NamedBlobFile(
+    form.omitted(IAddForm, 'ogg_480')
+    form.omitted(IEditForm, 'ogg_480')
+    form.widget(ogg_480=StreamNamedFileFieldWidget)
+    ogg_480 = namedfile.NamedBlobFile(
         required=False,
     )
 
-    form.omitted(IAddForm, 'mp4_360')
-    form.omitted(IEditForm, 'mp4_360')
-    form.widget(mp4_360=StreamNamedFileFieldWidget)
-    mp4_360 = namedfile.NamedBlobFile(
-        required=False,
-    )
-
-    form.omitted(IAddForm, 'mp4_480')
-    form.omitted(IEditForm, 'mp4_480')
-    form.widget(mp4_480=StreamNamedFileFieldWidget)
-    mp4_480 = namedfile.NamedBlobFile(
-        required=False,
-    )
-
-    form.omitted(IAddForm, 'mp4_720')
-    form.omitted(IEditForm, 'mp4_720')
-    form.widget(mp4_720=StreamNamedFileFieldWidget)
-    mp4_720 = namedfile.NamedBlobFile(
-        required=False,
-    )
-
-    form.omitted(IAddForm, 'mp4_1080')
-    form.omitted(IEditForm, 'mp4_1080')
-    form.widget(mp4_1080=StreamNamedFileFieldWidget)
-    mp4_1080 = namedfile.NamedBlobFile(
+    form.omitted(IAddForm, 'ogg_720')
+    form.omitted(IEditForm, 'ogg_720')
+    form.widget(ogg_720=StreamNamedFileFieldWidget)
+    ogg_720 = namedfile.NamedBlobFile(
         required=False,
     )
 
