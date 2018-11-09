@@ -49,8 +49,8 @@ class DefaultGroup(group.Group):
 class ConversionSettingsGroup(group.Group):
     label = u"Conversion settings"
     fields = field.Fields(IGlobalMediaSettings).select(
-        "avconv_in_mp4", "avconv_out_mp4",
-        "avconv_in_webm", "avconv_out_webm")
+        "avconv_in_webm", "avconv_out_webm",
+        "avconv_in_ogg", "avconv_out_ogg")
 
 
 class GlobalSettingsForm(group.GroupForm, form.EditForm):

@@ -87,8 +87,12 @@ class AVConvProcess(BaseSubProcess):
         settings = GlobalSettings(portal)
 
         params = self.get_avconv_params(settings, video_type, video)
-        cmd = [self.binary] + ['-i', filepath] + ['-s', quality] + \
-            params['in'] + [outputfilepath] + params['out']
+        if video_type == 'webm':
+            cmd = [self.binary] + ['-i', filepath] + ['-s:v', quality] + \
+                params['in'] + [outputfilepath] + params['out']
+        elif video_type == 'ogg':
+            cmd = [self.binary] + ['-i', filepath] + ['-s:v', quality] + \
+                params['in'] + [outputfilepath] + params['out']
 
         self._run_command(cmd)
 

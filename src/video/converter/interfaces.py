@@ -34,7 +34,7 @@ class IGlobalMediaSettings(Interface):
                               u"If you'd prefer to save on disc space, but provide "
                               u"less HTML5 support, change the additional video "
                               u"formats that are generated here"),
-        default=['mp4_240'],
+        default=['webm_360, ogg_360'],
         value_type=schema.Choice(
             vocabulary=SimpleVocabulary(VIDEO_FORMATS_VOCAB)
         )
@@ -57,28 +57,6 @@ class IGlobalMediaSettings(Interface):
         default=False,
     )
 
-    avconv_in_mp4 = schema.TextLine(
-        title=_("MP4: infile parameters"),
-        description=_(
-            'avconv_in_mp4_help',
-            default=u"Pass optional infile parameters to aconv during the "
-                    u"MP4 conversion process."
-        ),
-        default=u'',
-        required=False,
-    )
-
-    avconv_out_mp4 = schema.TextLine(
-        title=_("MP4: outfile parameters"),
-        description=_(
-            'avconv_out_mp4_help',
-            default=u"Pass optional outfile parameters to aconv during the "
-                    u"MP4 conversion process."
-        ),
-        default=u'',
-        required=False,
-    )
-
     avconv_in_webm = schema.TextLine(
         title=_("WebM: infile parameters"),
         description=_(
@@ -96,6 +74,28 @@ class IGlobalMediaSettings(Interface):
             'avconv_out_webm_help',
             default=u"Pass optional outfile parameters to aconv during the "
                     u"WebM conversion process."
+        ),
+        default=u'',
+        required=False,
+    )
+
+    avconv_in_ogg = schema.TextLine(
+        title=_("OGG: infile parameters"),
+        description=_(
+            'avconv_in_ogg_help',
+            default=u"Pass optional infile parameters to aconv during the "
+                    u"OGG conversion process."
+        ),
+        default=u'',
+        required=False,
+    )
+
+    avconv_out_ogg = schema.TextLine(
+        title=_("OGG: outfile parameters"),
+        description=_(
+            'avconv_out_ogg_help',
+            default=u"Pass optional outfile parameters to aconv during the "
+                    u"OGG conversion process."
         ),
         default=u'',
         required=False,

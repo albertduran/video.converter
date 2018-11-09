@@ -3,7 +3,7 @@
 
   <records prefix="plone.bundles/video.converter"
             interface='Products.CMFPlone.interfaces.IBundleRegistry'>
-    <value key="enabled">True</value>
+    <value key="enabled">False</value>
     <value key="jscompilation">++resource++video.converter/integration.js</value>
     <value key="csscompilation">++resource++video.converter/components/mediaelement/build/mediaelementplayer.min.css</value>
     <value key="last_compilation">2018-10-30 00:00:00</value>
