@@ -58,7 +58,7 @@
     name="video_course_view"
     for="*"
     template="templates/video_course.pt"
-    class=".views.VideoCourseView"
+    class=".course.VideoCourseView"
     layer="..interfaces.ILayer"
     permission="zope2.View" />
   <adapter
