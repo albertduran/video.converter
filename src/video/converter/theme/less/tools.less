@@ -1,0 +1,62 @@
+// Mixins i funcions
+.transition-all {
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.background-cover {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.serif-font {
+  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+}
+.sans-serif-font {
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.flexbox {
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.flex-content {
+  -ms-flex: 1;
+  -webkit-box-flex:1;
+  flex:1;
+}
+
+.grid {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-content {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-tablet {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-mobile {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: repeat(1, 1fr);
+}

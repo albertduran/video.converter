@@ -1,0 +1,67 @@
+<tal:sections
+     xmlns:tal="http://xml.zope.org/namespaces/tal"
+     xmlns:metal="http://xml.zope.org/namespaces/metal"
+     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+     tal:define="portal_tabs view/portal_tabs"
+     tal:condition="portal_tabs"
+     i18n:domain="plone">
+
+  <nav class="plone-navbar fixed-top" id="portal-globalnav-wrapper">
+    <div class="container">
+      <a id="portal-logo" class="navbar__brand js-scroll-trigger"
+         tal:attributes="href view/navigation_root_url;
+                         title view/navigation_root_title"
+          i18n:domain="plone"
+          i18n:attributes="title">UVideo</a>
+
+      <div class="flexright">
+        <div class="plone-navbar-header">
+          <button type="button" class="plone-navbar-toggle" data-toggle="collapse" data-target="#portal-globalnav-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <div class="plone-collapse plone-navbar-collapse" id="portal-globalnav-collapse">
+          <ul class="plone-nav navbar-nav"
+              id="portal-globalnav"
+              tal:define="selected_tab python:view.selected_portal_tab">
+              <tal:tabs tal:repeat="tab portal_tabs">
+                <li tal:define="tid tab/id" class="nav__item"
+                    tal:attributes="id string:portaltab-${tid};">
+                    <a href=""
+                       class="nav__link"
+                       tal:content="tab/name"
+                       tal:attributes="href tab/url;
+                                       title tab/description|nothing;
+                                       target tab/link_target|nothing;">
+                      Tab Name
+                    </a>
+                </li>
+              </tal:tabs>
+          </ul>
+        </div>
+
+        <div id="portal-anontools" tal:condition="python:view.user_actions and view.anonymous">
+          <ul>
+            <li>
+              <tal:actions repeat="action view/user_actions">
+                  <a href=""
+                     class="nav__link"
+                     tal:attributes="action"
+                     tal:content="action/title"
+                     i18n:translate="">
+                      action title
+                  </a>
+              </tal:actions>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+</tal:sections>

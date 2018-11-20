@@ -1,0 +1,86 @@
+// Styling for the navbar
+@media (min-width: 768px) {
+  .plone-navbar-collapse.plone-collapse {
+      display: inline-block !important;
+  }
+}
+.fixed-top {
+    z-index: 2;
+}
+#personaltools-login {
+    font-size: 1.25rem;
+    margin-top: 29px;
+    white-space: nowrap;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    .sans-serif-font;
+    &:hover {
+      text-decoration: underline;
+      color: @plone-gray-lighter;
+    }
+    &.active {
+      color: @plone-gray-lighter;
+      background-color: transparent;
+      &:hover {
+        background-color: transparent;
+      }
+    }
+}
+.plone-navbar {
+  #portal-logo {
+    float: left;
+    font-size: 30px;
+  }
+  .navbar__brand {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 15rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+    &:focus,
+    &:hover {
+      color: @plone-gray-lighter;
+    }
+  }
+  .flexright {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: flex-end;
+    padding: .5rem 1rem;
+    .navbar-nav {
+      flex-direction: row;
+      > li.nav__item {
+        > a.nav__link,
+          > a.nav__link:focus {
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            &:hover {
+              text-decoration: underline;
+              color: @plone-gray-lighter;
+            }
+            &.active {
+              color: @plone-gray-lighter;
+              background-color: transparent;
+              &:hover {
+                background-color: transparent;
+              }
+            }
+          }
+      }
+    }
+  }
+}

@@ -48,16 +48,31 @@
     class=".views.Utils"
     allowed_interface="..interfaces.IUtils"
     layer="..interfaces.ILayer" />
-
   <browser:page
     name="global-media-settings"
     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
     class=".views.GlobalSettingsFormView"
     layer="..interfaces.ILayer"
     permission="cmf.ManagePortal" />
+  <browser:page
+    name="video_course_view"
+    for="*"
+    template="templates/video_course.pt"
+    class=".views.VideoCourseView"
+    layer="..interfaces.ILayer"
+    permission="zope2.View" />
   <adapter
     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
     provides="..interfaces.IGlobalMediaSettings"
     factory="..settings.GlobalSettings" />
+
+
+  <!-- Logo + global sections -->
+  <browser:viewlet
+      name="vc.navbar"
+      manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+      class="video.converter.browser.viewlets.GlobalSectionsViewlet"
+      permission="zope2.View"
+      />
 
 </configure>

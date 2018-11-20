@@ -3,8 +3,8 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:plone="http://namespaces.plone.org/plone"
-    xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:five="http://namespaces.zope.org/five"
+    xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="video.converter">
 
@@ -14,6 +14,16 @@
   <include package="plone.behavior" file="meta.zcml"/>
   <include package="plone.app.dexterity" />
   <include package="five.globalrequest" />
+
+  <include package=".browser" />
+  <include file="profiles.zcml" />
+
+  <!-- ++theme++vc-->
+  <plone:static
+      directory="theme"
+      type="theme"
+      name="vc"
+      />
 
   <permission
       id="video.converter.AddVideo"
@@ -34,15 +44,10 @@
 
   <!-- events -->
   <subscriber
-    for=".interfaces.IVideoEnabled
-         zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+    for=".interfaces.IVideoEnabled zope.lifecycleevent.interfaces.IObjectModifiedEvent"
     handler=".subscribers.video_edited" />
   <subscriber
-    for=".interfaces.IVideoEnabled
-         zope.lifecycleevent.interfaces.IObjectAddedEvent"
+    for=".interfaces.IVideoEnabled zope.lifecycleevent.interfaces.IObjectAddedEvent"
     handler=".subscribers.video_added" />
-
-  <include package=".browser" />
-  <include file="profiles.zcml" />
 
 </configure>

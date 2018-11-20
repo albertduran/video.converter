@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
 <layers name="" meta_type="ComponentRegistry">
-    <layer name="video.converter" 
-           interface="video.converter.interfaces.ILayer" />
+    <layer name="video.converter" interface="video.converter.interfaces.ILayer" />
 </layers>
