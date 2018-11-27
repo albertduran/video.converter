@@ -36,7 +36,7 @@
               <span class="item videoName" tal:content="video/Title">Title</span>
               <span class="time pull-right">
                 <i class="timeItem fa fa-clock-o"></i>
-                <!-- <span class="timeItem" tal:content="python:view.get_duration(video)">Time</span> -->
+                <span class="timeItem" tal:content="video/duration">Time</span>
                 <img tal:condition="python: video_has_preview"
                      tal:attributes="src python: video.getURL() + '/@@images/image/tile'"
                      class="tile-tile" />
