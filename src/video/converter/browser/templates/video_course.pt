@@ -9,10 +9,8 @@
 
 <metal:content-core fill-slot="content-core">
 <metal:main_macro define-macro="content-core"
-    tal:define="videos view/course_videos;
-                number_videos view/course_number_videos;
-                thumb_scale_list view/get_thumb_scale_list;
-                img_class python:'thumb-%s pull-right' % thumb_scale_list;">
+    tal:define="subjects view/course_titles;
+                number_videos view/course_number_videos;">
 
   <div metal:define-macro="text-field-view"
       id="parent-fieldname-text" class="stx"
@@ -25,27 +23,36 @@
   <metal:listingmacro define-macro="listing"
       tal:define="portal context/@@plone_portal_state/portal;
                   image_scale portal/@@image_scale">
-  <ul class="photoAlbumEntry">
-    <tal:videos tal:repeat="video videos">
-      <li tal:define="video_has_preview python:video.getIcon;">
-        <a tal:attributes="href string:${video/getURL}/view;
-                           title video/Title">
-          <icon>PLAY</icon>
-          <span class="videoName" tal:content="video/Title">Title</span>
-          <icon>CLOCK</icon>
-          <span class="time" tal:content="video/Title">Time</span>
-          <img tal:condition="python: video_has_preview and thumb_scale_list"
-               tal:replace="structure python:image_scale.tag(video, 'image', scale=thumb_scale_list, css_class=img_class)" />
-        </a>
-      </li>
-    </tal:videos>
-  </ul>
+  <tal:course tal:repeat="subject subjects">
+    <h3 tal:content="subject" class="courseTitle">Titol</h3>
+
+    <tal:block tal:define="videos python: view.course_videos(subject);">
+      <ul class="lessonsChapter">
+        <tal:videos tal:repeat="video videos">
+          <li class="lesson" tal:define="video_has_preview python:video.getIcon;">
+            <a class="fl" tal:attributes="href string:${video/getURL}/view;
+                               title video/Title">
+              <span class="item curriculum-icon"><i class="fa fa-play"></i></span>
+              <span class="item videoName" tal:content="video/Title">Title</span>
+              <span class="time pull-right">
+                <i class="timeItem fa fa-clock-o"></i>
+                <!-- <span class="timeItem" tal:content="python:view.get_duration(video)">Time</span> -->
+                <img tal:condition="python: video_has_preview"
+                     tal:attributes="src python: video.getURL() + '/@@images/image/tile'"
+                     class="tile-tile" />
+              </span>
+            </a>
+          </li>
+        </tal:videos>
+      </ul>
+    </tal:block>
+  </tal:course>
 
   <div metal:use-macro="context/batch_macros/macros/navigation" />
 
   <metal:empty metal:define-slot="no_items_in_listing">
     <p class="discreet"
-        tal:condition="python: not videos and not albums"
+        tal:condition="python: number_videos == 0"
         tal:content="view/no_items_message">
       There are currently no items in this folder.
     </p>

@@ -13,6 +13,8 @@ from video.converter.config import getFormat
 from plone.namedfile import NamedBlobFile, NamedBlobImage
 from video.converter.settings import GlobalSettings
 from Products.CMFCore.utils import getToolByName
+from subprocess import Popen, PIPE
+import re
 
 logger = getLogger('video.converter')
 
@@ -155,6 +157,16 @@ def switchFileExt(filename, ext):
     return filebase + '.' + ext
 
 
+def _get_duration(filepath):
+    cmd = "avconv -i %s" % filepath
+    p = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
+    di = p.communicate()
+    for line in di:
+        if line.rfind("Duration") > 0:
+            duration = re.findall("Duration: (\d+:\d+:[\d.]+)", line)[0]
+    return duration
+
+
 def _convertFormat(context):
     # reset these...
     context.video_file_webm = None
@@ -179,6 +191,13 @@ def _convertFormat(context):
         logger.warn('not a valid video format')
         return
     context.metadata = metadata
+
+    try:
+        duration = _get_duration(tmpfilepath)
+    except:
+        logger.warn('cannot recover duration from file')
+        return
+    context.duration = duration
 
     conversion_types = {}
 

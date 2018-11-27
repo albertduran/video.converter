@@ -20,7 +20,7 @@
  <property name="klass">video.converter.content.Video</property>
  <property name="behaviors">
   <element value="plone.app.content.interfaces.INameFromTitle"/>
-  <element value="video.converter.behavior.IVideo"/>
+  <element value="video.converter.behaviors.behavior.IVideo"/>
   <element value="plone.app.dexterity.behaviors.metadata.IDublinCore"/>
  </property>
  <property name="schema"></property>

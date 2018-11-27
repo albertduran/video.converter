@@ -4,7 +4,7 @@ from zope.interface import implements
 from video.converter.interfaces import (
     IMediaEnabled, IVideoEnabled
 )
-from video.converter.behavior import IVideo
+from video.converter.behaviors.behavior import IVideo
 
 
 class PrimaryFieldInfo(object):

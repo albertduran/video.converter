@@ -2,8 +2,16 @@
 body {
   font-size: 14px;
   padding-top: 3rem;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
-
+.outer-wrapper {
+  flex: 1;
+}
+aside {
+  width: 100%;
+}
 // overrides default footer.plone.less
 #portal-footer-wrapper {
   font-size: 1.25rem;
@@ -24,4 +32,46 @@ body {
       }
     }
   }
+}
+.item {
+    padding: 15px 15px;
+}
+.timeItem {
+  padding: 0 15px;
+}
+.time {
+  margin-top: -13px;
+}
+#content {
+  margin-top: 1.5rem;
+}
+#content-core a {
+    border-bottom: 0px;
+}
+.tile-tile {
+  height: 50px;
+  margin-top: -2px;
+}
+.courseTitle {
+  padding-bottom: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.courseTitle::after {
+  content: '';
+  width: 40px;
+  height: 3px;
+  background-color: #20c997;
+  display: block;
+  border-radius: 2px;
+  margin-top: 10px;
+}
+.lessonsChapter {
+  padding-inline-start: 0 !important;
+}
+.lesson {
+  list-style-type: none;
+  border: 1px solid rgba(0,0,0,.08);
+  padding: 15px 0;
 }

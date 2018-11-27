@@ -30,11 +30,20 @@
       title="video.converter: Add Video"
       />
 
+  <!-- Behaviors -->
+  <plone:behavior
+    title="Chapters from Subjects"
+    description="Add chapters to view video_course_view from video Subjects in these folder"
+    provides=".behaviors.chapters.IChapter"
+    factory=".behaviors.chapters.Chapter"
+    for="plone.app.contenttypes.interfaces.IFolder"
+    />
+
   <plone:behavior
       title="Video"
       description="Add support for video fields"
-      provides=".behavior.IVideo"
-      factory=".behavior.Video"
+      provides=".behaviors.behavior.IVideo"
+      factory=".behaviors.behavior.Video"
       for="plone.dexterity.interfaces.IDexterityContent"
       marker=".interfaces.IVideoEnabled"
       />
