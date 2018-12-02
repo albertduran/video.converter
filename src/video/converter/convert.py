@@ -15,8 +15,6 @@ from video.converter.settings import GlobalSettings
 from Products.CMFCore.utils import getToolByName
 from subprocess import Popen, PIPE
 import re
-from plone import api
-from zope.globalrequest import getRequest
 
 logger = getLogger('video.converter')
 
@@ -241,7 +239,6 @@ def _convertFormat(context):
     except:
         logger.warn('error getting thumbnail from video')
     logger.warn('CONVERSIONS FINISHED')
-    api.portal.show_message('Conversions finished', request=getRequest())
     rmtree(tmpdir)
 
 
