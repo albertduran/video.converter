@@ -12,6 +12,7 @@ body {
 aside {
   width: 100%;
 }
+
 // overrides default footer.plone.less
 #portal-footer-wrapper {
   font-size: 1.25rem;
@@ -33,8 +34,13 @@ aside {
     }
   }
 }
+
+//video_course_view
+span.item.videoName {
+  padding-left: 0;
+}
 .item {
-    padding: 15px 15px;
+  padding: 15px 15px;
 }
 .timeItem {
   padding: 0 15px;
@@ -74,4 +80,60 @@ aside {
   list-style-type: none;
   border: 1px solid rgba(0,0,0,.08);
   padding: 15px 0;
+}
+
+//video_view detail
+h3.title {
+  font-weight: 500;
+  margin: 0;
+  padding-bottom: 20px;
+  font-size: 30px;
+}
+.widget {
+  border: 1px solid #ebebeb;
+  padding: 35px;
+}
+.widget:last-child {
+  margin-bottom: 0;
+}
+aside {
+  display: block;
+}
+.chapters-wrapper {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  > li {
+      margin-bottom: 20px;
+      > a {
+        text-decoration: none!important;
+        outline: 0!important;
+      }
+  }
+  img {
+    display: inline;
+    margin-right: 10px;
+  }
+  .name {
+    display: inline;
+    font-weight: 500;
+    font-size: 15px;
+    color: #3e4555;
+    margin: .8em 0;
+  }
+}
+.video {
+  margin: 2rem 0;
+}
+h1.documentFirstHeading {
+  margin-top: 3rem;
+}
+.more_videos {
+  margin: 2rem 0;
+}
+a.link-category {
+  background-color: lightblue;
+}
+fieldset {
+  border: none !important;
 }

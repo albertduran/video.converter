@@ -18,16 +18,24 @@ from zope.schema.interfaces import IContextSourceBinder
 from zope.interface import directlyProvides
 
 
+def subjectInTerms(terms, subject):
+    """Return True if subject in terms else False."""
+    for term in terms:
+        if subject == term.title:
+            return True
+    return False
+
+
 def tagsInContext(context):
     """Vocabulary for show Subjects in IChapter behavior."""
     terms = []
     literals = api.content.find(portal_type="Video", context=context)
     for item in literals:
-        for subject in item.Subject:
-            flattened = unicodedata.normalize('NFKD', subject.decode(
-                'utf-8')).encode('ascii', errors='ignore')
-            terms.append(SimpleVocabulary.createTerm(subject, flattened,
-                                                     subject))
+        for s in item.Subject:
+            if not subjectInTerms(terms, s):
+                flattened = unicodedata.normalize('NFKD', s.decode(
+                    'utf-8')).encode('ascii', errors='ignore')
+                terms.append(SimpleVocabulary.createTerm(s, flattened, s))
     return SimpleVocabulary(terms)
 
 

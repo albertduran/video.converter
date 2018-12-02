@@ -18,6 +18,12 @@
   <include package=".browser" />
   <include file="profiles.zcml" />
 
+  <browser:jbot
+      directory="templates"
+      layer=".interfaces.ILayer"
+      />
+
+
   <!-- ++theme++vc-->
   <plone:static
       directory="theme"
@@ -52,11 +58,11 @@
   <adapter factory=".primary.PrimaryFieldInfo"/>
 
   <!-- events -->
-  <subscriber
+  <!--<subscriber
     for=".interfaces.IVideoEnabled zope.lifecycleevent.interfaces.IObjectModifiedEvent"
     handler=".subscribers.video_edited" />
   <subscriber
     for=".interfaces.IVideoEnabled zope.lifecycleevent.interfaces.IObjectAddedEvent"
-    handler=".subscribers.video_added" />
+    handler=".subscribers.video_added" />-->
 
 </configure>

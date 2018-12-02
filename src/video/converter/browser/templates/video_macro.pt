@@ -2,7 +2,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.6/mediaelementplayer.css">
   <link rel="stylesheet" href="++resource++video.converter/mediaelement-plugins/dist/quality/quality.css">
-  <div class="video-container"
+  <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 video"
        tal:define="util video/@@converter-utils|context/@@converter-utils;
                    settings util/settings;
                    video nocall: video|context;

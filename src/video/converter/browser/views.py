@@ -1,5 +1,5 @@
 import urllib
-
+from Acquisition import aq_inner, aq_parent
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as pmf
 from Products.Five import BrowserView
@@ -12,6 +12,7 @@ from video.converter.interfaces import IGlobalMediaSettings
 from video.converter.interfaces import IMediaEnabled
 from video.converter.settings import GlobalSettings
 from video.converter.subscribers import video_edited
+from video.converter.async import convertVideoFormats
 from z3c.form import button
 from z3c.form import field
 from z3c.form import form
@@ -37,6 +38,19 @@ class VideoView(BrowserView):
         from plone.protect.utils import addTokenToUrl
         url = "%s/@@edit" % self.context.absolute_url()
         return addTokenToUrl(url)
+
+    @memoize
+    def get_videos_in_folder(self):
+        """Get title and link to all videos of these course."""
+        context = aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        folder_path = '/'.join(aq_parent(context).getPhysicalPath())
+        results = catalog(path={'query': folder_path, 'depth': 1},
+                          portal_type="Video",
+                          review_state=['published', 'private'],
+                          sort_on=('getObjPositionInParent')
+                          )
+        return results
 
 
 class DefaultGroup(group.Group):
@@ -79,7 +93,8 @@ class ConvertVideo(BrowserView):
     def __call__(self):
         # Mark the video as not converted
         self.context.video_converted = False
-        video_edited(self.context, None)
+        #video_edited(self.context, None)
+        convertVideoFormats(self.context)
         self.request.response.redirect(self.context.absolute_url())
 
 

@@ -22,6 +22,7 @@
   <element value="plone.app.content.interfaces.INameFromTitle"/>
   <element value="video.converter.behaviors.behavior.IVideo"/>
   <element value="plone.app.dexterity.behaviors.metadata.IDublinCore"/>
+  <element value="plone.app.dexterity.behaviors.discussion.IAllowDiscussion"/>
  </property>
  <property name="schema"></property>
  <property name="model_source"></property>

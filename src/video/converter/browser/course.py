@@ -4,9 +4,7 @@ from Acquisition import aq_inner
 from Products.Five import BrowserView
 from video.converter.interfaces import IVideoEnabled
 from plone.memoize.instance import memoize
-from plone.registry.interfaces import IRegistry
-from zope.component import getUtility
-from Products.CMFPlone.interfaces import ISiteSchema
+from Products.CMFPlone import PloneMessageFactory as pmf
 
 
 class VideoCourseView(BrowserView):
@@ -41,9 +39,17 @@ class VideoCourseView(BrowserView):
 
     @property
     def no_items_message(self):
-        return _(
-            'description_no_items_in_folder',
-            default=u'There are currently no items in this folder.'
+        return pmf(
+            'description_no_videos_in_folder',
+            default=u'There are currently no videos in this folder.'
+        )
+
+    @property
+    def no_subjects_message(self):
+        return pmf(
+            'description_no_subjects_configured',
+            default=u'There are currently no subjects configured to show videos\
+                      or videos in this folder are not categorized.'
         )
 
     @property
