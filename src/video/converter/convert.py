@@ -53,9 +53,8 @@ class BaseSubProcess(object):
             cmd = cmd.split()
         cmdformatted = ' '.join(cmd)
         logger.info("Running command %s" % cmdformatted)
-        process = subprocess.Popen(cmd, stdout=subprocess.PIPE,
-                                   stderr=subprocess.PIPE,
-                                   close_fds=self.close_fds)
+        process = Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                        close_fds=self.close_fds)
         output, error = process.communicate()
         process.stdout.close()
         process.stderr.close()
@@ -188,9 +187,10 @@ def _convertFormat(context):
     try:
         metadata = avprobe.info(tmpfilepath)
     except:
-        logger.warn('not a valid video format')
+        logger.warn('NOT a valid video format')
         return
     context.metadata = metadata
+    logger.info('Valid video format')
 
     try:
         duration = _get_duration(tmpfilepath)
@@ -226,6 +226,8 @@ def _convertFormat(context):
                     fi, filename=switchFileExt(video.filename,  vt))
                 setattr(context, video_type, namedblob)
                 fi.close()
+            import transaction
+            transaction.commit()
 
     # try and grab one from video
     output_filepath = os.path.join(tmpdir, u'screengrab.png')

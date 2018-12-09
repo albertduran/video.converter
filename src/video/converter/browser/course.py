@@ -100,16 +100,3 @@ class VideoCourseView(BrowserView):
             sort_on='getObjPositionInParent',
         )
         return videos
-
-    # def get_duration(self, video):
-    #     import ipdb
-    #     ipdb.set_trace()
-    #     from subprocess import Popen, PIPE
-    #     import re
-    #     cmd = "avconv -i %s" % video
-    #     p = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
-    #     di = p.communicate()
-    #     for line in di:
-    #         if line.rfind("Duration") > 0:
-    #             duration = re.findall("Duration: (\d+:\d+:[\d.]+)", line)[0]
-    #     return duration
