@@ -107,4 +107,10 @@
   <replace css:theme="#portal-toolbar" css:content-children="#edit-bar" css:if-not-content=".ajax_load" css:if-content=".userrole-authenticated" />
   <replace css:theme="#anonymous-actions" css:content-children="#portal-personaltools-wrapper" css:if-not-content=".ajax_load" css:if-content=".userrole-anonymous" />
 
+  <rules css:if-content="body.section-front-page.mosaic-grid">
+    <theme href="homepage.html" />
+    <replace css:theme=".content-container1" css:content=".content-container1" />
+    <replace css:theme=".content-container2" css:content=".content-container2" />
+    <replace css:theme=".content-container3" css:content=".content-container3" />
+  </rules>
 </rules>
