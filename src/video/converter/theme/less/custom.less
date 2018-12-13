@@ -12,6 +12,10 @@ body {
 aside {
   width: 100%;
 }
+video, .responsive-img {
+  max-width: 100%;
+  height: auto;
+}
 
 // overrides default footer.plone.less
 #portal-footer-wrapper {
@@ -34,6 +38,9 @@ aside {
     }
   }
 }
+ul#portal-siteactions {
+  padding-inline-start: 0;
+}
 
 //video_course_view
 span.item.videoName {
@@ -43,7 +50,11 @@ span.item.videoName {
   padding: 15px 15px;
 }
 .timeItem {
-  padding: 0 15px;
+  padding-right: 15px;
+}
+i.timeItem {
+  padding-right: 5px;
+  height: 17px;
 }
 .time {
   margin-top: -13px;
@@ -75,6 +86,9 @@ span.item.videoName {
 }
 .lessonsChapter {
   padding-inline-start: 0 !important;
+}
+ul.lessonsChapter {
+  margin-bottom: 4rem;
 }
 .lesson {
   list-style-type: none;
@@ -252,6 +266,7 @@ fieldset {
   .aboutus-text, .aboutus-img {
     position: relative;
     z-index: 1;
+    margin-bottom: 5rem;
     h3 {
       font-size: 5rem;
       text-transform: uppercase;
@@ -266,5 +281,89 @@ fieldset {
       font-weight: 400;
       margin-bottom: 1.5rem;
     }
+  }
+}
+
+@mixin flexbox() {
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+@mixin flex-content() {
+  -ms-flex: 1;
+  -webkit-box-flex:1;
+  flex:1;
+}
+
+@supports (display:flex) {
+  .myflexbox {
+    @include flexbox;
+  }
+
+  .box {
+    @include flex-content;
+    color:$dark;
+    font-size: 50px;
+    text-align: center;
+    padding:10px;
+  }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+/* IE10+ CSS styles go here */
+  .myflexbox {
+    display: block;
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+
+    -webkit-column-gap: 1px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 1px; /* Firefox */
+    column-gap: 1px;
+  }
+  .box {
+    display: block;
+    margin-bottom: 10%;
+  }
+  .card{
+    display: block !important;
+    width: 15rem;
+    height: auto;
+  }
+}
+
+.row::before, .row::after {
+  display: none !important;
+}
+@media screen and (max-width: 1024px) {
+  .single-features {
+      margin-bottom: 30px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .frontend.section-front-page .feature-icon .fa {
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 580px) {
+  #portal-siteactions li {
+    margin-left: 11px !important;
+    margin-right: 11px !important;
+  }
+  .frontend.section-front-page .documentFirstHeading {
+    margin-top: 10rem;
+    padding-left: 10px;
+  }
+  .frontend.section-front-page .content-container1 p {
+    width: 100%;
+    padding-left: 12px;
   }
 }
