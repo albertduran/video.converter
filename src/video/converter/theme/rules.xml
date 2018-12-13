@@ -110,7 +110,7 @@
   <rules css:if-content="body.section-front-page.mosaic-grid">
     <theme href="homepage.html" />
     <replace css:theme=".content-container1" css:content=".content-container1" />
-    <replace css:theme=".content-container2" css:content=".content-container2" />
-    <replace css:theme=".content-container3" css:content=".content-container3" />
+    <replace css:theme=".row.content-container2" css:content=".row.content-container2" />
+    <replace css:theme=".row.content-container3" css:content=".row.content-container3" />
   </rules>
 </rules>

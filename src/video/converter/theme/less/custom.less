@@ -208,23 +208,23 @@ fieldset {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 4rem 3.5rem;
+    padding: 40px 35px;
     position: relative;
-    box-shadow: 2rem 0px 2rem 0px rgba(1,0,0,0.1);
+    box-shadow: 20px 0px 20px 0px rgba(1,0,0,0.1);
     transition: all .4s;
   }
   .single-features:hover {
-    box-shadow: 2rem 2rem 2rem 0px rgba(0,0,0,0.1);
+    box-shadow: 20px 20px 20px 0px rgba(0,0,0,0.1);
   }
   .feature-icon .fa {
     font-size: 35px;
     color: #ffc107;
-    margin-bottom: 2rem;
-    margin-right: 2rem;
+    margin-bottom: 20px;
+    margin-right: 20px;
   }
   .single-features h4 {
     font-size: 16px;
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
     color: #000;
     line-height: 32px;
     font-weight: 700;
@@ -245,7 +245,7 @@ fieldset {
   }
   #aboutus {
     overflow: hidden;
-    padding: 12rem 0 11rem;
+    padding: 120px 0 110px;
     background: #f0f8ff;
     display: flex;
     background-image: url(../nosaltres.jpg);
@@ -266,77 +266,21 @@ fieldset {
   .aboutus-text, .aboutus-img {
     position: relative;
     z-index: 1;
-    margin-bottom: 5rem;
+    margin-bottom: 50px;
     h3 {
-      font-size: 5rem;
+      font-size: 50px;
       text-transform: uppercase;
-      margin-bottom: 2rem;
+      margin-bottom: 20px;
       color: #fff;
       font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
     }
     p {
-      font-size: 1.5rem;
+      font-size: 15px;
       color: #fff;
-      line-height: 2.8rem;
+      line-height: 28px;
       font-weight: 400;
-      margin-bottom: 1.5rem;
+      margin-bottom: 15px;
     }
-  }
-}
-
-@mixin flexbox() {
-  display:-webkit-box;
-  display:-ms-flexbox;
-  display:flex;
-
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-@mixin flex-content() {
-  -ms-flex: 1;
-  -webkit-box-flex:1;
-  flex:1;
-}
-
-@supports (display:flex) {
-  .myflexbox {
-    @include flexbox;
-  }
-
-  .box {
-    @include flex-content;
-    color:$dark;
-    font-size: 50px;
-    text-align: center;
-    padding:10px;
-  }
-}
-
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-/* IE10+ CSS styles go here */
-  .myflexbox {
-    display: block;
-    -webkit-column-count: 3; /* Chrome, Safari, Opera */
-    -moz-column-count: 3; /* Firefox */
-    column-count: 3;
-
-    -webkit-column-gap: 1px; /* Chrome, Safari, Opera */
-    -moz-column-gap: 1px; /* Firefox */
-    column-gap: 1px;
-  }
-  .box {
-    display: block;
-    margin-bottom: 10%;
-  }
-  .card{
-    display: block !important;
-    width: 15rem;
-    height: auto;
   }
 }
 
@@ -359,7 +303,7 @@ fieldset {
     margin-right: 11px !important;
   }
   .frontend.section-front-page .documentFirstHeading {
-    margin-top: 10rem;
+    margin-top: 100px;
     padding-left: 10px;
   }
   .frontend.section-front-page .content-container1 p {
