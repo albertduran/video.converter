@@ -11,7 +11,6 @@ from video.converter.config import getFormat
 from video.converter.interfaces import IGlobalMediaSettings
 from video.converter.interfaces import IMediaEnabled
 from video.converter.settings import GlobalSettings
-from video.converter.subscribers import video_edited
 from video.converter.async import convertVideoFormats
 from z3c.form import button
 from z3c.form import field
@@ -56,13 +55,13 @@ class VideoView(BrowserView):
 class DefaultGroup(group.Group):
     label = u"Default"
     fields = field.Fields(IGlobalMediaSettings).select(
-        "additional_video_formats", "async_quota_size",
-        "default_video_width", "default_video_height")
+        "additional_video_formats", "async_quota_size")
 
 
 class ConversionSettingsGroup(group.Group):
     label = u"Conversion settings"
     fields = field.Fields(IGlobalMediaSettings).select(
+        "avconv_in_mp4", "avconv_out_mp4",
         "avconv_in_webm", "avconv_out_webm",
         "avconv_in_ogg", "avconv_out_ogg")
 

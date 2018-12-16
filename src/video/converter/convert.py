@@ -88,7 +88,10 @@ class AVConvProcess(BaseSubProcess):
         settings = GlobalSettings(portal)
 
         params = self.get_avconv_params(settings, video_type, video)
-        if video_type == 'webm':
+        if video_type == 'mp4':
+            cmd = [self.binary] + ['-i', filepath] + ['-s:v', quality] + \
+                params['in'] + [outputfilepath] + params['out']
+        elif video_type == 'webm':
             cmd = [self.binary] + ['-i', filepath] + ['-s:v', quality] + \
                 params['in'] + [outputfilepath] + params['out']
         elif video_type == 'ogg':
@@ -106,8 +109,6 @@ class AVConvProcess(BaseSubProcess):
         params = {}
         for op in ('in', 'out'):
             option = getattr(settings, 'avconv_%s_%s' % (op, video_type)) or ''
-            option = option.replace('{width}', str(video.width))
-            option = option.replace('{height}', str(video.height))
             params[op] = shlex.split(option)
         return params
 

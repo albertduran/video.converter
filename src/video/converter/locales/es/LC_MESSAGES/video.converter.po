@@ -1,6 +1,3 @@
-# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# SOME DESCRIPTIVE TITLE.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -13,9 +10,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "Language-Code: en\n"
-"Language-Name: English\n"
+"Language-Name: Spanish\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: video.converter\n"
+"Domain: DOMAIN\n"
 
 #: ../configure.zcml:46
 msgid "Add chapters to view video_course_view from video Subjects in these folder"

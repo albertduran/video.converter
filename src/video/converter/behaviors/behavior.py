@@ -7,11 +7,9 @@ from plone.namedfile import field as namedfile
 from plone.supermodel import model
 from video.converter import _
 from video.converter.browser.widget import StreamNamedFileFieldWidget
-from video.converter.settings import GlobalSettings
 from z3c.form.interfaces import IAddForm, IEditForm
 from zope import schema
 from zope.component import adapts
-from zope.component.hooks import getSite
 from zope.interface import alsoProvides, implements
 from zope.interface import Invalid
 
@@ -20,18 +18,6 @@ def valid_video(namedblob):
     if namedblob.contentType.split('/')[0] != 'video':
         raise Invalid("must be a video file")
     return True
-
-
-def getDefaultWidth():
-    portal = getSite()
-    settings = GlobalSettings(portal)
-    return settings.default_video_width
-
-
-def getDefaultHeight():
-    portal = getSite()
-    settings = GlobalSettings(portal)
-    return settings.default_video_height
 
 
 class IVideo(model.Schema):
@@ -51,6 +37,27 @@ class IVideo(model.Schema):
         description=u"",
         required=False,
         constraint=valid_video
+    )
+
+    form.omitted(IAddForm, 'mp4_360')
+    form.omitted(IEditForm, 'mp4_360')
+    form.widget(mp4_360=StreamNamedFileFieldWidget)
+    mp4_360 = namedfile.NamedBlobFile(
+        required=False,
+    )
+
+    form.omitted(IAddForm, 'mp4_480')
+    form.omitted(IEditForm, 'mp4_480')
+    form.widget(mp4_480=StreamNamedFileFieldWidget)
+    mp4_480 = namedfile.NamedBlobFile(
+        required=False,
+    )
+
+    form.omitted(IAddForm, 'mp4_720')
+    form.omitted(IEditForm, 'mp4_720')
+    form.widget(mp4_720=StreamNamedFileFieldWidget)
+    mp4_720 = namedfile.NamedBlobFile(
+        required=False,
     )
 
     form.omitted(IAddForm, 'webm_360')
@@ -95,23 +102,8 @@ class IVideo(model.Schema):
         required=False,
     )
 
-    width = schema.Int(
-        title=_(u"Width"),
-        defaultFactory=getDefaultWidth
-    )
-
-    height = schema.Int(
-        title=_(u"Height"),
-        defaultFactory=getDefaultHeight
-    )
-
     form.omitted('metadata')
     metadata = schema.Text(
-        required=False
-    )
-
-    form.omitted('duration')
-    duration = schema.Text(
         required=False
     )
 
@@ -197,8 +189,9 @@ class Video(BaseAdapter):
 
     video_file = property(_get_video_file, _set_video_file)
     image = BasicProperty(IVideo['image'])
-    width = BasicProperty(IVideo['width'])
-    height = BasicProperty(IVideo['height'])
+    mp4_360 = UnsettableProperty(IVideo['mp4_360'])
+    mp4_480 = UnsettableProperty(IVideo['mp4_480'])
+    mp4_720 = UnsettableProperty(IVideo['mp4_720'])
     webm_360 = UnsettableProperty(IVideo['webm_360'])
     webm_480 = UnsettableProperty(IVideo['webm_480'])
     webm_720 = UnsettableProperty(IVideo['webm_720'])
@@ -206,4 +199,3 @@ class Video(BaseAdapter):
     ogg_480 = UnsettableProperty(IVideo['ogg_480'])
     ogg_720 = UnsettableProperty(IVideo['ogg_720'])
     image = UnsettableProperty(IVideo['image'])
-    duration = UnsettableProperty(IVideo['duration'])

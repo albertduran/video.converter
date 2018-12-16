@@ -5,11 +5,9 @@
   <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 video"
        tal:define="util video/@@converter-utils|context/@@converter-utils;
                    settings util/settings;
-                   video nocall: video|context;
-                   height height|video/height|settings/default_video_height|string:720;
-                   width width|video/width|settings/default_video_width|string:400;">
+                   video nocall: video|context;">
     <tal:has_video tal:condition="python: util.mp4_url">
-        <video tal:attributes="poster util/image_url; width width; height height;"
+        <video tal:attributes="poster util/image_url;"
               preload="none" class="mejs-player" controls="" controls playsinline webkit-playsinline >
             <tal:videos tal:repeat="video python:util.videos()">
                 <source src="" type="video/mp4"

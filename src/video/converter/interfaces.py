@@ -34,7 +34,7 @@ class IGlobalMediaSettings(Interface):
                               u"If you'd prefer to save on disc space, but provide "
                               u"less HTML5 support, change the additional video "
                               u"formats that are generated here"),
-        default=['webm_360, ogg_360'],
+        default=['mp4_360', 'webm_360, ogg_360'],
         value_type=schema.Choice(
             vocabulary=SimpleVocabulary(VIDEO_FORMATS_VOCAB)
         )
@@ -45,16 +45,26 @@ class IGlobalMediaSettings(Interface):
                       "The quota name assigned is `video.converter`."),
         default=3)
 
-    force = schema.Bool(
-        title=_("Force video conversion"),
+    avconv_in_mp4 = schema.TextLine(
+        title=_("MP4: infile parameters"),
         description=_(
-            "always_convert_help",
-            default=u"Force the video through the full conversion "
-                    u"process, even if it is already in the final video format."
-                    u" This may be useful if you always want to transcode to a "
-                    u"given video size."
+            'avconv_in_mp4_help',
+            default=u"Pass optional infile parameters to aconv during the "
+                    u"MP4 conversion process."
         ),
-        default=False,
+        default=u'',
+        required=False,
+    )
+
+    avconv_out_mp4 = schema.TextLine(
+        title=_("MP4: outfile parameters"),
+        description=_(
+            'avconv_out_mp4_help',
+            default=u"Pass optional outfile parameters to aconv during the "
+                    u"MP4 conversion process."
+        ),
+        default=u'',
+        required=False,
     )
 
     avconv_in_webm = schema.TextLine(
@@ -100,14 +110,6 @@ class IGlobalMediaSettings(Interface):
         default=u'',
         required=False,
     )
-
-    default_video_width = schema.Int(
-        title=_(u'Default video width'),
-        default=720)
-
-    default_video_height = schema.Int(
-        title=_(u'Default video height'),
-        default=400)
 
 
 class IUtils(Interface):
