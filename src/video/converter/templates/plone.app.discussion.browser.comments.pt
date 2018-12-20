@@ -14,8 +14,7 @@
            tal:condition="python:isDiscussionAllowed or has_replies"
            i18n:domain="plone">
 
-    <div class="reply"
-         tal:condition="python:isAnon and not isAnonymousDiscussionAllowed">
+    <div class="reply" tal:condition="python: False">
         <form tal:attributes="action view/login_action">
             <input class="standalone loginbutton"
                    type="submit"
@@ -26,7 +25,7 @@
     </div>
 
     <div class="discussion"
-         tal:attributes="class python: showCommenterImage and 'col-lg-8 col-md-8 col-sm-12 col-xs-12 discussion showCommenterImage' or 'col-lg-8 col-md-8 col-sm-12 col-xs-12 discussion';"
+         tal:attributes="class python: showCommenterImage and 'col-lg-8 col-md-12 col-sm-12 col-xs-12 discussion showCommenterImage' or 'col-lg-8 col-md-12 col-sm-12 col-xs-12 discussion';"
          tal:condition="has_replies">
         <tal:getreplies repeat="reply_dict replies">
 
@@ -188,7 +187,7 @@
         </form>
     </div>
 
-    <div id="commenting" class="col-lg-8 col-md-8 col-sm-12 col-xs-12 reply" tal:condition="python:isDiscussionAllowed and (isAnon and isAnonymousDiscussionAllowed or userHasReplyPermission)">
+    <div id="commenting" class="col-lg-8 col-md-12 col-sm-12 col-xs-12 reply" tal:condition="python:isDiscussionAllowed and (isAnon and isAnonymousDiscussionAllowed or userHasReplyPermission)">
 
         <fieldset>
 

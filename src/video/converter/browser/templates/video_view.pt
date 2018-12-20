@@ -21,8 +21,10 @@
 
 <metal:content-core fill-slot="content-core">
     <metal:content-core define-macro="content-core" tal:define="video nocall: context">
-        <div metal:use-macro="context/video_macro/macros/video" />
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 more_videos">
+        <div class="col-lg-8 col-md-12 video">
+          <div metal:use-macro="context/video_macro/macros/video" />
+        </div>
+        <div class="col-lg-4 col-md-12 more_videos">
           <aside class="widget widget-chapters" tal:define="videos view/get_videos_in_folder;">
             <h3 class="title" i18n:translate="">More Videos in these Course</h3>
             <ul class="chapters-wrapper">

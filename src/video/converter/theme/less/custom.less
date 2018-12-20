@@ -5,6 +5,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background-color: #f1f1f1;
 }
 .outer-wrapper {
   flex: 1;
@@ -16,7 +17,9 @@ video, .responsive-img {
   max-width: 100%;
   height: auto;
 }
-
+footer {
+  width: 100%;
+}
 // overrides default footer.plone.less
 #portal-footer-wrapper {
   font-size: 1.25rem;
@@ -26,7 +29,6 @@ video, .responsive-img {
   a {
     color: white;
     &:hover {
-      text-decoration: underline;
       color: lightgrey !important;
     }
     &.active {
@@ -41,6 +43,7 @@ video, .responsive-img {
 ul#portal-siteactions {
   padding-inline-start: 0;
 }
+//////////////////////////////
 
 //video_course_view
 span.item.videoName {
@@ -56,26 +59,26 @@ i.timeItem {
   padding-right: 5px;
   height: 17px;
 }
-.time {
+/*.time {
   margin-top: -13px;
-}
+}*/
 #content {
   margin-top: 1.5rem;
 }
 #content-core a {
-    border-bottom: 0px;
+  border-bottom: 0px;
 }
 .tile-tile {
   height: 50px;
   margin-top: -2px;
 }
 .courseTitle {
-  padding-bottom: 20px;
+  padding-bottom: 10px;
+  padding-top: 2rem;
   font-weight: 600;
-  letter-spacing: 1px;
   text-transform: uppercase;
 }
-.courseTitle::after {
+/*.courseTitle::after {
   content: '';
   width: 40px;
   height: 3px;
@@ -83,18 +86,30 @@ i.timeItem {
   display: block;
   border-radius: 2px;
   margin-top: 10px;
-}
+}*/
 .lessonsChapter {
   padding-inline-start: 0 !important;
 }
 ul.lessonsChapter {
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 }
 .lesson {
   list-style-type: none;
-  border: 1px solid rgba(0,0,0,.08);
+  border: 1px solid transparent;
   padding: 15px 0;
+  background-color: #fafafa;
+  font-size: 16px;
+  //border-radius: 3px;
+  margin-bottom: 2px!important;
 }
+a.fl .lesson:hover {
+    background-color: white;
+    border: 1px solid #007ab3;
+    text-decoration: none!important;
+}
+
+.lessonsChapter a:hover{text-decoration: none!important;}
+
 
 //video_view detail
 h3.title {
@@ -287,7 +302,14 @@ fieldset {
 .row::before, .row::after {
   display: none !important;
 }
+video, .mejs__container, .mejs__layer {
+  width: 720px !important;
+  height: 520px !important;
+}
 @media screen and (max-width: 1024px) {
+  .more_videos {
+    display: none;
+  }
   .single-features {
       margin-bottom: 30px;
   }
@@ -296,8 +318,37 @@ fieldset {
   .frontend.section-front-page .feature-icon .fa {
     font-size: 30px;
   }
+  video, .mejs__container, .mejs__layer {
+    width: 660px !important;
+    height: 460px !important;
+  }
+  header {
+    padding-left: 15px;
+  }
+  #content-core {
+    padding-left: 15px;
+  }
+  .col-lg-8.col-md-12.video {
+    padding-left: 0px;
+  }
+  .col-lg-8.col-md-12.col-sm-12.col-xs-12.discussion.showCommenterImage {
+    padding-right: 0px;
+  }
+  footer .col-xs-12.col-sm-12 {
+    padding-right: 0px;
+  }
+}
+@media screen and (max-width: 640px) {
+  video, .mejs__container, .mejs__layer {
+    width: 500px !important;
+    height: 300px !important;
+  }
 }
 @media screen and (max-width: 580px) {
+  video, .mejs__container, .mejs__layer {
+    width: 420px !important;
+    height: 280px !important;
+  }
   #portal-siteactions li {
     margin-left: 11px !important;
     margin-right: 11px !important;
@@ -310,4 +361,37 @@ fieldset {
     width: 100%;
     padding-left: 12px;
   }
+}
+@media screen and (max-width: 425px) {
+  video, .mejs__container, .mejs__layer {
+    width: 360px !important;
+    height: 220px !important;
+  }
+  #content-core {
+    padding-left: 0 !important;
+  }
+  .frontend.template-video_view .row .col-xs-12.col-sm-12 {
+    padding-left: 11px;
+  }
+}
+.pagination {
+  display: inline-block !important;
+  padding-left: 15px;
+  padding-right: 0;
+}
+.pagination ul {
+  padding-inline-start: 0;
+}
+.previous {
+  float: left !important;
+}
+.next {
+  float: right !important;
+}
+#commenting fieldset {
+  margin: 0;
+  padding: 0;
+}
+#commenting {
+  margin-bottom: 50px;
 }

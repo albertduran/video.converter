@@ -17,6 +17,7 @@ from z3c.form import field
 from z3c.form import form
 from z3c.form import group
 from zope.component.hooks import getSite
+import random
 
 try:
     from plone.protect.interfaces import IDisableCSRFProtection
@@ -49,7 +50,12 @@ class VideoView(BrowserView):
                           review_state=['published', 'private'],
                           sort_on=('getObjPositionInParent')
                           )
-        return results
+        five_random = []
+        if len(results) > 6:
+            five_random = random.sample(results, 6)
+        else:
+            five_random = results
+        return five_random
 
 
 class DefaultGroup(group.Group):

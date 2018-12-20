@@ -27,21 +27,23 @@
     <h3 tal:content="subject" class="courseTitle">Titol</h3>
 
     <tal:block tal:define="videos python: view.course_videos(subject);">
-      <ul class="lessonsChapter">
+      <ul class="lessonsChapter list-group">
         <tal:videos tal:repeat="video videos">
-          <li class="lesson">
-            <a class="fl" tal:attributes="href string:${video/getURL}/view;
-                               title video/Title">
-              <span class="item curriculum-icon"><i class="fa fa-play"></i></span>
+          <a class="fl" tal:attributes="href string:${video/getURL}/view;
+                             title video/Title">
+          <li class="lesson list-group-item">
+
+              <span class="item curriculum-icon">
+                <i class="fa fa-play"></i></span>
               <span class="item videoName" tal:content="video/Title">Title</span>
               <span class="time pull-right">
                 <i class="timeItem fa fa-clock-o"></i>
                 <span class="timeItem" tal:content="video/duration">Time</span>
-                <img tal:attributes="src python: video.getURL() + '/@@images/image/tile'"
-                     class="tile-tile" />
+                <!--img tal:attributes="src python: video.getURL() + '/@@images/image/tile'"
+                     class="tile-tile" /-->
               </span>
-            </a>
-          </li>
+
+          </li></a>
         </tal:videos>
       </ul>
     </tal:block>
