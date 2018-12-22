@@ -9,7 +9,7 @@
 
   <tal:block define="portal_url view/site_url;">
 
-    <nav class="col-lg-8 col-md-12 col-sm-12 col-xs-12 pagination"
+    <nav class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pagination"
          tal:define="next view/next;
                      previous view/previous"
          tal:condition="python:previous is not None or next is not None">

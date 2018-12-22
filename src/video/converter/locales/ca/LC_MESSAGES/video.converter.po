@@ -75,7 +75,7 @@ msgstr "Configuració del vídeos."
 
 #: ../browser/templates/video_view.pt:27
 msgid "More Videos in these Course"
-msgstr "Més vídeos d'aquest curs"
+msgstr "Vídeos relacionats"
 
 #: ../interfaces.py:44
 msgid "Number of conversions to run at a time. The quota name assigned is `video.converter`."

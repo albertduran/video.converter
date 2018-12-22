@@ -1,6 +1,6 @@
 <nav i18n:domain="video.converter"
      id="category"
-     class="col-lg-8 col-md-12 col-sm-12 col-xs-12 documentByLine"
+     class="col-lg-12 col-md-12 col-sm-12 col-xs-12 documentByLine"
      role="navigation"
      tal:define="categories context/Subject|nothing;
                  url_quote  nocall:modules/Products.PythonScripts.standard/url_quote;"

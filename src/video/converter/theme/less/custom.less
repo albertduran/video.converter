@@ -5,7 +5,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-color: #f1f1f1;
+  background-color: #f5f5f5;
 }
 .outer-wrapper {
   flex: 1;
@@ -59,9 +59,6 @@ i.timeItem {
   padding-right: 5px;
   height: 17px;
 }
-/*.time {
-  margin-top: -13px;
-}*/
 #content {
   margin-top: 1.5rem;
 }
@@ -78,15 +75,6 @@ i.timeItem {
   font-weight: 600;
   text-transform: uppercase;
 }
-/*.courseTitle::after {
-  content: '';
-  width: 40px;
-  height: 3px;
-  background-color: #20c997;
-  display: block;
-  border-radius: 2px;
-  margin-top: 10px;
-}*/
 .lessonsChapter {
   padding-inline-start: 0 !important;
 }
@@ -99,7 +87,6 @@ ul.lessonsChapter {
   padding: 15px 0;
   background-color: #fafafa;
   font-size: 16px;
-  //border-radius: 3px;
   margin-bottom: 2px!important;
 }
 a.fl .lesson:hover {
@@ -115,10 +102,12 @@ a.fl .lesson:hover {
 h3.title {
   font-weight: 500;
   margin: 0;
-  padding-bottom: 20px;
-  font-size: 30px;
+  padding-bottom: 30px;
+  font-size: 24px;
+  text-decoration: underline;
 }
 .widget {
+  background: #fff;
   border: 1px solid #ebebeb;
   padding: 35px;
 }
@@ -306,12 +295,18 @@ video, .mejs__container, .mejs__layer {
   width: 720px !important;
   height: 520px !important;
 }
+@media screen and (max-width: 1113px) {
+  video, .mejs__container, .mejs__layer {
+    width: 600px !important;
+    height: 520px !important;
+  }
+}
 @media screen and (max-width: 1024px) {
   .more_videos {
     display: none;
   }
   .single-features {
-      margin-bottom: 30px;
+    margin-bottom: 30px;
   }
 }
 @media screen and (max-width: 768px) {
@@ -328,10 +323,10 @@ video, .mejs__container, .mejs__layer {
   #content-core {
     padding-left: 15px;
   }
-  .col-lg-8.col-md-12.video {
+  .col-lg-12.col-md-12.video {
     padding-left: 0px;
   }
-  .col-lg-8.col-md-12.col-sm-12.col-xs-12.discussion.showCommenterImage {
+  .col-lg-12.col-md-12.col-sm-12.col-xs-12.discussion.showCommenterImage {
     padding-right: 0px;
   }
   footer .col-xs-12.col-sm-12 {
@@ -370,17 +365,17 @@ video, .mejs__container, .mejs__layer {
   #content-core {
     padding-left: 0 !important;
   }
-  .frontend.template-video_view .row .col-xs-12.col-sm-12 {
-    padding-left: 11px;
-  }
 }
 .pagination {
   display: inline-block !important;
-  padding-left: 15px;
+  margin-left: 13px;
   padding-right: 0;
 }
 .pagination ul {
   padding-inline-start: 0;
+}
+.pagination li>a {
+  font-weight: 500;
 }
 .previous {
   float: left !important;
@@ -394,4 +389,41 @@ video, .mejs__container, .mejs__layer {
 }
 #commenting {
   margin-bottom: 50px;
+  border: 1px solid #ebebeb;
+  background: #fff;
+  margin-left: 13px;
+}
+#categories-filed-under {
+  padding: 12px;
+  margin-left: -11px;
+  border: 1px solid #ebebeb;
+}
+#category {
+  margin-bottom: 12px;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ebebeb;
+  margin-left: 13px;
+}
+#category ul {
+  padding-left: 8px;
+}
+.link-category {
+  font-size: 16px;
+}
+.formControls {
+  border-top: none;
+  background: #fff;
+  padding: 12px;
+  box-shadow: none;
+}
+.commentBody{
+  background: #fff;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .footer-wrapper{
+    position: fixed;
+    bottom: 0;
+  }
 }

@@ -157,13 +157,26 @@ def switchFileExt(filename, ext):
     return filebase + '.' + ext
 
 
+def format_time(time):
+    hour, minute, second = time.split(':')
+    second = second.split('.')[0]
+    if hour == '00' and minute == '00':
+        duration = second + 's'
+    elif hour == '00' and minute != '00':
+        duration = minute + 'm ' + second + 's'
+    else:
+        duration = hour + 'h ' + minute + 'm ' + second + 's'
+    return duration
+
+
 def _get_duration(filepath):
     cmd = "avconv -i %s" % filepath
     p = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
     di = p.communicate()
     for line in di:
         if line.rfind("Duration") > 0:
-            duration = re.findall("Duration: (\d+:\d+:[\d.]+)", line)[0]
+            time = re.findall("Duration: (\d+:\d+:[\d.]+)", line)[0]
+            duration = format_time(time)
     return duration
 
 
