@@ -5,17 +5,15 @@
 .navbar.ui-offset-parent {
     display: block;
 }
-@media (min-width: 768px) {
-  .plone-navbar-collapse.plone-collapse {
-      display: inline-block !important;
-  }
-}
 .fixed-top {
-    z-index: 4;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 4;
 }
 #personaltools-login {
     font-size: 1.25rem;
-    margin-top: 29px;
     white-space: nowrap;
     font-weight: 700;
     color: white;
@@ -35,13 +33,13 @@
 }
 .plone-navbar {
   #portal-logo {
-    float: left;
     font-size: 30px;
   }
   .navbar__brand {
     display: inline-block;
     padding-top: .3125rem;
     padding-bottom: .3125rem;
+    margin-left: 15px;
     margin-right: 15rem;
     font-size: 1.25rem;
     line-height: inherit;
@@ -65,8 +63,10 @@
     align-items: center;
     -ms-flex-pack: justify;
     justify-content: flex-end;
-    padding: .5rem 1rem;
-    .navbar-nav {
+    padding-top: 0.5rem;
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+    .plone-navbar-nav {
       flex-direction: row;
       > li.nav__item {
         > a.nav__link,
@@ -88,5 +88,21 @@
           }
       }
     }
+  }
+}
+.plone-navbar-nav>li>a {
+  line-height: 0.5;
+}
+@media (max-width: 768px) {
+  .flexright {
+    float: left;
+  }
+  .plone-navbar .navbar__brand {
+    margin-right: 45px;
+  }
+}
+@media (max-width: 425px) {
+  .plone-navbar .navbar__brand {
+    margin-right: 30rem;
   }
 }

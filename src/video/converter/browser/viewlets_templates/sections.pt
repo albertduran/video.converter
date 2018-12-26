@@ -25,7 +25,7 @@
         </div>
 
         <div class="plone-collapse plone-navbar-collapse" id="portal-globalnav-collapse">
-          <ul class="plone-nav navbar-nav"
+          <ul class="plone-nav plone-navbar-nav"
               id="portal-globalnav"
               tal:define="selected_tab python:view.selected_portal_tab">
               <tal:tabs tal:repeat="tab portal_tabs">
@@ -41,22 +41,17 @@
                     </a>
                 </li>
               </tal:tabs>
-          </ul>
-        </div>
-
-        <div id="portal-anontools" tal:condition="python:view.user_actions and view.anonymous">
-          <ul>
-            <li>
-              <tal:actions repeat="action view/user_actions">
-                  <a href=""
-                     class="nav__link"
-                     tal:attributes="action"
-                     tal:content="action/title"
-                     i18n:translate="">
-                      action title
-                  </a>
-              </tal:actions>
-            </li>
+              <li class="nav__item" tal:condition="python:view.user_actions and view.anonymous">
+                <tal:actions repeat="action view/user_actions">
+                    <a href=""
+                       class="nav__link"
+                       tal:attributes="action"
+                       tal:content="action/title"
+                       i18n:translate="">
+                        action title
+                    </a>
+                </tal:actions>
+              </li>
           </ul>
         </div>
 
