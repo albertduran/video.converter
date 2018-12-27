@@ -47,7 +47,6 @@ class VideoView(BrowserView):
         folder_path = '/'.join(aq_parent(context).getPhysicalPath())
         results = catalog(path={'query': folder_path, 'depth': 1},
                           portal_type="Video",
-                          review_state=['published', 'private'],
                           sort_on=('getObjPositionInParent')
                           )
         five_random = []
