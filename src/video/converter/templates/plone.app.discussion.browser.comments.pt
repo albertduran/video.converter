@@ -12,7 +12,7 @@
                        wtool context/@@plone_tools/workflow;
                        auth_token context/@@authenticator/token|nothing"
            tal:condition="python:isDiscussionAllowed or has_replies"
-           i18n:domain="plone">
+           i18n:domain="video.converter">
 
     <div class="reply" tal:condition="python: False">
         <form tal:attributes="action view/login_action">

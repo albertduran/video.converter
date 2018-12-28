@@ -5,7 +5,7 @@
                  isViewTemplate view/isViewTemplate|nothing"
      tal:condition="python:enabled and isViewTemplate"
      tal:omit-tag=""
-     i18n:domain="plone">
+     i18n:domain="video.converter">
 
   <tal:block define="portal_url view/site_url;">
 

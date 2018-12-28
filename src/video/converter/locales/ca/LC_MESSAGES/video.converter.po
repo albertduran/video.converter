@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-12-13 18:34+0000\n"
+"POT-Creation-Date: 2018-12-28 08:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,76 +16,71 @@ msgstr ""
 
 #: ../configure.zcml:46
 msgid "Add chapters to view video_course_view from video Subjects in these folder"
-msgstr "Afegir com capítols (subtítols) les etiquetes assignades als vídeos d'aquesta carpeta. Aquesta configuració només es vàlida per la vista video_course_view."
+msgstr "Afegir com capítols (subtítols) les etiquetes assignades als vídeos d'aquesta carpeta. Aquesta configuració només es vàlida per la vista video_course_view"
 
 #: ../configure.zcml:55
 msgid "Add support for video fields"
-msgstr "Afegir suport per als camps de video."
+msgstr "Afegir suport per als camps de video"
 
 #: ../interfaces.py:30
 msgid "Additional Video Formats"
-msgstr "Formats de video addicionals."
+msgstr "Formats de video addicionals"
 
 #: ../interfaces.py:43
 msgid "Async Quota Size"
-msgstr "Capacitat de conversió asíncrona simultània."
+msgstr "Capacitat de conversió asíncrona simultània"
 
 #: ../configure.zcml:46
 msgid "Chapters from Subjects"
-msgstr "Capítols a partir de les etiquetes."
+msgstr "Capítols a partir de les etiquetes"
 
 #: ../behaviors/chapters.py:50
 msgid "Chapters in this course"
-msgstr "Capítols en aquest curs."
+msgstr "Capítols en aquest curs"
 
-#: ../behavior.py:41
-#: ../behaviors/behavior.py:41
+#: ../behavior.py:27
+#: ../behaviors/behavior.py:27
 msgid "Cover Image"
-msgstr "Imatge de portada."
+msgstr "Imatge de portada"
 
-#: ../interfaces.py:109
-msgid "Default video height"
-msgstr "Altura per defecte del video."
-
-#: ../interfaces.py:105
-msgid "Default video width"
-msgstr "Amplada per defecte del video."
-
-#: ../interfaces.py:49
-msgid "Force video conversion"
-msgstr "Forçar la conversió del video."
-
-#: ../behavior.py:104
-#: ../behaviors/behavior.py:104
-msgid "Height"
-msgstr "Alçada"
+#: ../templates/plone.app.discussion.browser.comments.pt:121
+msgid "Edit"
+msgstr "Edita"
 
 #: ../profiles.zcml:24
 msgid "Installs plone5 specific video.converter steps"
-msgstr "Pases per instal·lar el paquet video.converter a Plone5."
+msgstr "Pases per instal·lar el paquet video.converter a Plone5"
 
 #: ../profiles.zcml:17
 msgid "Installs the video.converter package"
-msgstr "Instal·lar el paquet video.converter."
+msgstr "Instal·lar el paquet video.converter"
 
-#: ../browser/views.py:73
+#: ../interfaces.py:49
+msgid "MP4: infile parameters"
+msgstr "Paràmetres d'entrada per MP4"
+
+#: ../interfaces.py:60
+msgid "MP4: outfile parameters"
+msgstr "Paràmetres de sortida per MP4"
+
+#: ../browser/views.py:77
 #: ../profiles/default/controlpanel.xml
 msgid "Media Settings"
-msgstr "Configuració del vídeos."
+msgstr "Configuració dels vídeos"
 
-#: ../browser/templates/video_view.pt:27
+#: ../browser/templates/video_view.pt:29
 msgid "More Videos in these Course"
 msgstr "Vídeos relacionats"
 
 #: ../interfaces.py:44
 msgid "Number of conversions to run at a time. The quota name assigned is `video.converter`."
-msgstr "Nombre de conversions simultànies. La quota assignada per defecte es `video.converter`."
+msgstr "Nombre de conversions simultànies"
 
-#: ../interfaces.py:83
+#: ../interfaces.py:93
 msgid "OGG: infile parameters"
 msgstr "Paràmetres d'entrada per OGG"
 
-#: ../interfaces.py:94
+#: ../interfaces.py:104
 msgid "OGG: outfile parameters"
 msgstr "Paràmetres de sortida per OGG"
 
@@ -93,23 +88,18 @@ msgstr "Paràmetres de sortida per OGG"
 msgid "Video"
 msgstr "Video"
 
-#: ../behavior.py:50
-#: ../behaviors/behavior.py:50
+#: ../behavior.py:36
+#: ../behaviors/behavior.py:36
 msgid "Video File"
 msgstr "Fitxer de video"
 
-#: ../interfaces.py:61
+#: ../interfaces.py:71
 msgid "WebM: infile parameters"
 msgstr "Paràmetres d'entrada per WebM"
 
-#: ../interfaces.py:72
+#: ../interfaces.py:82
 msgid "WebM: outfile parameters"
 msgstr "Paràmetres de sortida per WebM"
-
-#: ../behavior.py:99
-#: ../behaviors/behavior.py:99
-msgid "Width"
-msgstr "Amplada"
 
 #: ../behaviors/chapters.py:51
 msgid "additional_chapters_help"
@@ -120,40 +110,105 @@ msgstr "Capítols addicionals"
 msgid "additional_video_formats_help"
 msgstr "Formats de video addicionals"
 
-#. Default: "Force the video through the full conversion process, even if it is already in the final video format. This may be useful if you always want to transcode to a given video size."
+#. Default: "Pass optional infile parameters to aconv during the MP4 conversion process."
 #: ../interfaces.py:50
-msgid "always_convert_help"
-msgstr ""
+msgid "avconv_in_mp4_help"
+msgstr "Paràmetres opcionals d'entrada per avconv durant el procés de conversió a MP4."
 
 #. Default: "Pass optional infile parameters to aconv during the OGG conversion process."
-#: ../interfaces.py:84
+#: ../interfaces.py:94
 msgid "avconv_in_ogg_help"
 msgstr "Paràmetres opcionals d'entrada per avconv durant el procés de conversió a OGG."
 
 #. Default: "Pass optional infile parameters to aconv during the WebM conversion process."
-#: ../interfaces.py:62
+#: ../interfaces.py:72
 msgid "avconv_in_webm_help"
 msgstr "Paràmetres opcionals d'entrada per avconv durant el procés de conversió a WebM."
 
+#. Default: "Pass optional outfile parameters to aconv during the MP4 conversion process."
+#: ../interfaces.py:61
+msgid "avconv_out_mp4_help"
+msgstr "Paràmetres opcionals de sortida per avconv durant el procés de conversió a MP4."
+
 #. Default: "Pass optional outfile parameters to aconv during the OGG conversion process."
-#: ../interfaces.py:95
+#: ../interfaces.py:105
 msgid "avconv_out_ogg_help"
 msgstr "Paràmetres opcionals de sortida per avconv durant el procés de conversió a OGG."
 
 #. Default: "Pass optional outfile parameters to aconv during the WebM conversion process."
-#: ../interfaces.py:73
+#: ../interfaces.py:83
 msgid "avconv_out_webm_help"
 msgstr "Paràmetres opcionals de sortida per avconv durant el procés de conversió a WebM."
 
 #. Default: "Configure the parameters for media."
-#: ../browser/views.py:74
+#: ../browser/views.py:78
 msgid "description_media_global_settings_form"
 msgstr "Configura els paràmetres per a vídeos."
+
+#. Default: "Add comment"
+#: ../templates/plone.app.discussion.browser.comments.pt:194
+msgid "label_add_comment"
+msgstr "Afegir"
+
+#. Default: "Anonymous"
+#: ../templates/plone.app.discussion.browser.comments.pt:75
+msgid "label_anonymous"
+msgstr "Anònim"
+
+#. Default: "Commenting has been disabled."
+#: ../templates/plone.app.discussion.browser.comments.pt:171
+msgid "label_commenting_disabled"
+msgstr "Els comentaris es troben deshabilitats"
+
+#. Default: "Delete"
+#: ../templates/plone.app.discussion.browser.comments.pt:97
+msgid "label_delete"
+msgstr "Esborrar"
+
+#. Default: "Edit"
+#: ../templates/plone.app.discussion.browser.comments.pt:131
+msgid "label_edit"
+msgstr "Editar"
 
 #. Default: "Filed under:"
 #: ../templates/plone.app.layout.viewlets.keywords.pt:8
 msgid "label_filed_under"
 msgstr "Categoria/es:"
+
+#. Default: "Log in to add comments"
+#: ../templates/plone.app.discussion.browser.comments.pt:19
+msgid "label_login_to_add_comments"
+msgstr "Vàlida't per afegir comentaris"
+
+#. Default: "Next: ${itemtitle}"
+#: ../templates/plone.app.layout.nextprevious.nextprevious.pt:37
+msgid "label_next_item"
+msgstr "Següent vídeo: ${itemtitle}"
+
+#. Default: "Previous: ${itemtitle}"
+#: ../templates/plone.app.layout.nextprevious.nextprevious.pt:26
+msgid "label_previous_item"
+msgstr "Anterior vídeo: ${itemtitle}"
+
+#. Default: "Reply"
+#: ../templates/plone.app.discussion.browser.comments.pt:162
+msgid "label_reply"
+msgstr "Respon"
+
+#. Default: "says:"
+#: ../templates/plone.app.discussion.browser.comments.pt:78
+msgid "label_says"
+msgstr "diu:"
+
+#. Default: "Go to next item"
+#: ../templates/plone.app.layout.nextprevious.nextprevious.pt:32
+msgid "title_next_item"
+msgstr "Anar al següent vídeo"
+
+#. Default: "Go to previous item"
+#: ../templates/plone.app.layout.nextprevious.nextprevious.pt:20
+msgid "title_previous_item"
+msgstr "Anar a l'anterior vídeo"
 
 #: ../profiles.zcml:31
 msgid "uninstalls the video.converter package"

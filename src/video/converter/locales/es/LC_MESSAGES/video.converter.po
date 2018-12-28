@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-12-13 18:34+0000\n"
+"POT-Creation-Date: 2018-12-28 08:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,26 +38,13 @@ msgstr ""
 msgid "Chapters in this course"
 msgstr ""
 
-#: ../behavior.py:41
-#: ../behaviors/behavior.py:41
+#: ../behavior.py:27
+#: ../behaviors/behavior.py:27
 msgid "Cover Image"
 msgstr ""
 
-#: ../interfaces.py:109
-msgid "Default video height"
-msgstr ""
-
-#: ../interfaces.py:105
-msgid "Default video width"
-msgstr ""
-
-#: ../interfaces.py:49
-msgid "Force video conversion"
-msgstr ""
-
-#: ../behavior.py:104
-#: ../behaviors/behavior.py:104
-msgid "Height"
+#: ../templates/plone.app.discussion.browser.comments.pt:121
+msgid "Edit"
 msgstr ""
 
 #: ../profiles.zcml:24
@@ -68,12 +55,20 @@ msgstr ""
 msgid "Installs the video.converter package"
 msgstr ""
 
-#: ../browser/views.py:73
+#: ../interfaces.py:49
+msgid "MP4: infile parameters"
+msgstr ""
+
+#: ../interfaces.py:60
+msgid "MP4: outfile parameters"
+msgstr ""
+
+#: ../browser/views.py:77
 #: ../profiles/default/controlpanel.xml
 msgid "Media Settings"
 msgstr ""
 
-#: ../browser/templates/video_view.pt:27
+#: ../browser/templates/video_view.pt:29
 msgid "More Videos in these Course"
 msgstr ""
 
@@ -81,11 +76,11 @@ msgstr ""
 msgid "Number of conversions to run at a time. The quota name assigned is `video.converter`."
 msgstr ""
 
-#: ../interfaces.py:83
+#: ../interfaces.py:93
 msgid "OGG: infile parameters"
 msgstr ""
 
-#: ../interfaces.py:94
+#: ../interfaces.py:104
 msgid "OGG: outfile parameters"
 msgstr ""
 
@@ -93,22 +88,17 @@ msgstr ""
 msgid "Video"
 msgstr ""
 
-#: ../behavior.py:50
-#: ../behaviors/behavior.py:50
+#: ../behavior.py:36
+#: ../behaviors/behavior.py:36
 msgid "Video File"
 msgstr ""
 
-#: ../interfaces.py:61
+#: ../interfaces.py:71
 msgid "WebM: infile parameters"
 msgstr ""
 
-#: ../interfaces.py:72
+#: ../interfaces.py:82
 msgid "WebM: outfile parameters"
-msgstr ""
-
-#: ../behavior.py:99
-#: ../behaviors/behavior.py:99
-msgid "Width"
 msgstr ""
 
 #: ../behaviors/chapters.py:51
@@ -120,39 +110,104 @@ msgstr ""
 msgid "additional_video_formats_help"
 msgstr ""
 
-#. Default: "Force the video through the full conversion process, even if it is already in the final video format. This may be useful if you always want to transcode to a given video size."
+#. Default: "Pass optional infile parameters to aconv during the MP4 conversion process."
 #: ../interfaces.py:50
-msgid "always_convert_help"
+msgid "avconv_in_mp4_help"
 msgstr ""
 
 #. Default: "Pass optional infile parameters to aconv during the OGG conversion process."
-#: ../interfaces.py:84
+#: ../interfaces.py:94
 msgid "avconv_in_ogg_help"
 msgstr ""
 
 #. Default: "Pass optional infile parameters to aconv during the WebM conversion process."
-#: ../interfaces.py:62
+#: ../interfaces.py:72
 msgid "avconv_in_webm_help"
 msgstr ""
 
+#. Default: "Pass optional outfile parameters to aconv during the MP4 conversion process."
+#: ../interfaces.py:61
+msgid "avconv_out_mp4_help"
+msgstr ""
+
 #. Default: "Pass optional outfile parameters to aconv during the OGG conversion process."
-#: ../interfaces.py:95
+#: ../interfaces.py:105
 msgid "avconv_out_ogg_help"
 msgstr ""
 
 #. Default: "Pass optional outfile parameters to aconv during the WebM conversion process."
-#: ../interfaces.py:73
+#: ../interfaces.py:83
 msgid "avconv_out_webm_help"
 msgstr ""
 
 #. Default: "Configure the parameters for media."
-#: ../browser/views.py:74
+#: ../browser/views.py:78
 msgid "description_media_global_settings_form"
+msgstr ""
+
+#. Default: "Add comment"
+#: ../templates/plone.app.discussion.browser.comments.pt:194
+msgid "label_add_comment"
+msgstr ""
+
+#. Default: "Anonymous"
+#: ../templates/plone.app.discussion.browser.comments.pt:75
+msgid "label_anonymous"
+msgstr ""
+
+#. Default: "Commenting has been disabled."
+#: ../templates/plone.app.discussion.browser.comments.pt:171
+msgid "label_commenting_disabled"
+msgstr ""
+
+#. Default: "Delete"
+#: ../templates/plone.app.discussion.browser.comments.pt:97
+msgid "label_delete"
+msgstr ""
+
+#. Default: "Edit"
+#: ../templates/plone.app.discussion.browser.comments.pt:131
+msgid "label_edit"
 msgstr ""
 
 #. Default: "Filed under:"
 #: ../templates/plone.app.layout.viewlets.keywords.pt:8
 msgid "label_filed_under"
+msgstr ""
+
+#. Default: "Log in to add comments"
+#: ../templates/plone.app.discussion.browser.comments.pt:19
+msgid "label_login_to_add_comments"
+msgstr ""
+
+#. Default: "Next: ${itemtitle}"
+#: ../templates/plone.app.layout.nextprevious.nextprevious.pt:37
+msgid "label_next_item"
+msgstr ""
+
+#. Default: "Previous: ${itemtitle}"
+#: ../templates/plone.app.layout.nextprevious.nextprevious.pt:26
+msgid "label_previous_item"
+msgstr ""
+
+#. Default: "Reply"
+#: ../templates/plone.app.discussion.browser.comments.pt:162
+msgid "label_reply"
+msgstr ""
+
+#. Default: "says:"
+#: ../templates/plone.app.discussion.browser.comments.pt:78
+msgid "label_says"
+msgstr ""
+
+#. Default: "Go to next item"
+#: ../templates/plone.app.layout.nextprevious.nextprevious.pt:32
+msgid "title_next_item"
+msgstr ""
+
+#. Default: "Go to previous item"
+#: ../templates/plone.app.layout.nextprevious.nextprevious.pt:20
+msgid "title_previous_item"
 msgstr ""
 
 #: ../profiles.zcml:31
